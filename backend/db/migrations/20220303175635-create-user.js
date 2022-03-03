@@ -1,7 +1,5 @@
 'use strict';
 
-const { binary } = require("pg/lib/defaults");
-
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Users', {
