@@ -45,6 +45,9 @@ const restoreUser = (req, res, next) => {
       // we clear token to prevent someone else is logged in
       res.clearCookie('token');
       return next(); // why we don't have to use return next(e)??
+      // next is just a function, and when it's invoked in a piece of middleware without an error, it just moves on to the next piece of middleware in line.
+      // If you pass an error to it, then it will skip the next middleware and move straight to the error handlers and return an error.
+      // right here, we dont want to send an error when that fails, we just want it to remove the 'token' cookie and make it to where nobody is logged in.
     }
 
     if (!req.user) res.clearCookie('token');
