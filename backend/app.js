@@ -58,6 +58,7 @@ app.use((err, _req, _res, next) => {
     err.errors = err.errors.map((e) => e.message);
     err.title = 'Validation error';
   }
+  console.log(err.title)
   next(err);
 });
 
