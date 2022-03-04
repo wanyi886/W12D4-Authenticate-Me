@@ -5,17 +5,6 @@ const { User } = require('../../db/models');
 
 const router = express.Router();
 
-// router.post("/", asyncHandler(async(req, res, next) => {
-//   const { username, email, password} = req.body;
-//   const user = await User.signup({ username, email, password});
-
-//   console.log("user", user)
-
-//   await setTokenCookie(res, user);
-//   return res.json({ user })
-
-// }))
-
 router.post(
   '/',
   asyncHandler(async (req, res) => {
