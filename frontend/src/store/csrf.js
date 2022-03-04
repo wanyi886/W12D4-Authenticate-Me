@@ -1,4 +1,4 @@
-// Why we need csrfFetch function?
+// Why we need csrfFetch function in store?
 
 
 
