@@ -6,25 +6,7 @@ const { User } = require('../../db/models');
 
 const router = express.Router();
 
-// router.post("/", asyncHandler(async(req, res, next) => {
-//   const { credential, password } = req.body;
-//   const user = await User.login({ credential, password });
-
-//   if (user) {
-//     await setTokenCookie(res, user);
-//     return res.json({ user })
-//   } else {
-//     const err = new Error("Login failed");
-//     err.status = 401;
-//     err.title = "Login failed";
-//     err.errors = ['The provided credentials were invalid.']
-//     return next(err)
-//   }
-
-// }))
-
-
-
+// Login
 router.post(
   '/',
   asyncHandler(async (req, res, next) => {
@@ -47,5 +29,13 @@ router.post(
     });
   })
 );
+
+
+// Logout
+router.delete("/", (req, res) => {
+  res.clearCookie("token");
+  return res.json({ message: 'success'})
+})
+
 
 module.exports = router;
