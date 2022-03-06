@@ -50,6 +50,9 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function(models) {
     // associations can be defined here
+    User.hasMany(models.Event,{ foreignKey: "eventId" });
+    User.hasMany(models.Ticket, { foreignKey: "userId" })
+
   };
 
   // create methods that the API routes for authentication will use to interact with the Users table
