@@ -1,52 +1,67 @@
 import { csrfFetch } from "./csrf";
 
-const SET_SESSION_USER = "session/SET_SESSION_USER";
-const REMOVE_SESSION_USER = "session/REMOVE_SESSION_USER";
+const SET_USER = 'session/setUser';
+const REMOVE_USER = 'session/removeUser';
 
-const setSessionUser = (user) => ({
-  type: SET_SESSION_USER,
-  payload: user
-})
+const setUser = (user) => {
+  return {
+    type: SET_USER,
+    payload: user,
+  };
+};
 
-const removeSessionUser = (session) => ({
-  type: REMOVE_SESSION_USER,
-})
+const removeUser = () => {
+  return {
+    type: REMOVE_USER,
+  };
+};
 
-export const loginUser = (user) => async(dispatch) => {
-  const { credential, password } = user
-  const res = await csrfFetch("/api/session", {
-    method: "POST",
-    body: JSON.stringify({ credential, password})
+export const login = (user) => async (dispatch) => {
+  const { credential, password } = user;
+  const response = await csrfFetch('/api/session', {
+    method: 'POST',
+    body: JSON.stringify({
+      credential,
+      password,
+    }),
   });
-
-  if (res.ok) {
-    const data  = await res.json();
-    dispatch(setSessionUser(data.user))
-  }
-}
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
 
 // export const logoutUser = () => async(dispatch) => {
 //   dispatch(removeSessionUser());
 // }
 
+export const restoreUser = () => async dispatch => {
+  // TODO: debug restoreUser function
+  console.log("restore function beginning") // works
+  const response = await csrfFetch('/api/session');
+  console.log("response~~~~~~~~~~",response) // not working
+  const data = await response.json();
+  console.log("data is HERE!!!!!", data)
+  console.log("data.user!!!!", data.user)
+  dispatch(setUser(data.user));
+  return response;
+};
 
 const initialState = { user: null };
 
-const sessionReducer = ( state = initialState, action ) => {
+const sessionReducer = (state = initialState, action) => {
+  let newState;
   switch (action.type) {
-    case SET_SESSION_USER: {
-      const newState = {...state};
-      newState.user = action.payload
+    case SET_USER:
+      newState = Object.assign({}, state);
+      newState.user = action.payload;
       return newState;
-    }
-    case REMOVE_SESSION_USER: {
-      const newState = {...state}
+    case REMOVE_USER:
+      newState = Object.assign({}, state);
       newState.user = null;
       return newState;
-    }
     default:
       return state;
   }
-}
+};
 
 export default sessionReducer;
