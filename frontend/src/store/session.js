@@ -35,16 +35,28 @@ export const login = (user) => async (dispatch) => {
 // }
 
 export const restoreUser = () => async dispatch => {
-  // TODO: debug restoreUser function
-  console.log("restore function beginning") // works
   const response = await csrfFetch('/api/session');
-  console.log("response~~~~~~~~~~",response) // not working
   const data = await response.json();
-  console.log("data is HERE!!!!!", data)
-  console.log("data.user!!!!", data.user)
   dispatch(setUser(data.user));
   return response;
 };
+
+
+export const signup = (user) => async (dispatch) => {
+  const { username, email, password } = user;
+  const response = await csrfFetch("/api/users", {
+    method: "POST",
+    body: JSON.stringify({
+      username,
+      email,
+      password,
+    }),
+  });
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
+
 
 const initialState = { user: null };
 
