@@ -8,6 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     imgUrl: DataTypes.TEXT,
     price: DataTypes.INTEGER,
     date: DataTypes.DATE,
+    startTime: DataTypes.STRING,
+    endTime: DataTypes.STRING,
     address: DataTypes.STRING,
     city: DataTypes.STRING,
     state: DataTypes.STRING,

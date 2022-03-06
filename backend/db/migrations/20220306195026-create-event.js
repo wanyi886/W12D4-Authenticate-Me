@@ -11,12 +11,12 @@ module.exports = {
       hostId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: Users }
+        references: { model: "Users" }
       },
       categoryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: Categories }
+        references: { model: "Categories" }
       },
       title: {
         type: Sequelize.STRING(50),
@@ -36,6 +36,14 @@ module.exports = {
       },
       date: {
         type: Sequelize.DATE,
+        allowNull: false,
+      },
+      startTime: {
+        type: Sequelize.STRING(10),
+        allowNull: false,
+      },
+      endTime: {
+        type: Sequelize.STRING(10),
         allowNull: false,
       },
       address: {

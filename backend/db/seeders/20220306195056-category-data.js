@@ -4,15 +4,51 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
 
     return queryInterface.bulkInsert('Categories', [
-      { type: "Business" },
-      { type: "Charity" },
-      { type: "Community" },
-      { type: "Food & Drink" },
-      { type: "Film & Media" },
-      { type: "Performing & Visual Art" },
-      { type: "Music" },
-      { type: "Sports & Fitness" },
-      { type: "Travel & Outdoor" },
+      {
+        type: "Business",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        type: "Charity",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        type: "Community",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        type: "Food & Drink",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        type: "Film & Media",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        type: "Performing & Visual Art",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        type: "Music",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        type: "Sports & Fitness",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        type: "Travel & Outdoor",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
    ], {});
 
   },
