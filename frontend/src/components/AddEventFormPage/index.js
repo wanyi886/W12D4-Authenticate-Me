@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import { getEventCatogories } from '../../store/event';
+import { getEventCategories } from '../../store/event';
 
 
 
@@ -26,7 +26,7 @@ const AddEventFormPage = () => {
 
 
   useEffect(() => {
-    dispatch(getEventCatogories())
+    dispatch(getEventCategories())
   }, [dispatch])
 
   return (

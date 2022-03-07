@@ -27,7 +27,7 @@ export const getAllEvents = () => async dispatch => {
   }
 }
 
-export const getEventCatogories = () => async dispatch => {
+export const getEventCategories = () => async dispatch => {
   const response = await fetch('/api/event/categories');
 
   if (response.ok) {
