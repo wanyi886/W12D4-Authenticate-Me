@@ -3,4 +3,17 @@ h1 {
   font-weight: 800;
   font-size: 52px;
   letter-spacing: 1px;
+  color:rgb(65, 65, 65)
+}
+
+form {
+  font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+  font-weight: 300;
+  color: rgb(97, 97, 97)
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
 }
