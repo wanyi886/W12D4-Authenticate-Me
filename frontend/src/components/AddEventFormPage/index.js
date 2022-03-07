@@ -195,7 +195,7 @@ const AddEventFormPage = () => {
             >
           </input>
         </div>
-
+        <button type="submit">Submit</button>
       </form>
     </div>
   )
