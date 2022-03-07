@@ -23,7 +23,7 @@ const AddEventFormPage = () => {
   const [city, setCity] = useState('');
   const [zipCode, setZipCode] = useState('');
   const [errors, setErrors] = useState([]);
-  
+
 
   useEffect(() => {
     dispatch(getEventCatogories())
@@ -63,15 +63,16 @@ const AddEventFormPage = () => {
         </div>
 
         <div>
-          <label htmlFor='category'>Event Type</label>
+          <label htmlFor='category'>Select a Type for your event</label>
         </div>
           <select
             name="category"
             onChange={e => setCategory(e.target.value)}
             value={category}
           >
-            <option value="" disabled>Select an event type</option>
-
+            {eventCategories.map(category =>
+              <option key={category.type}>{category.type}</option>
+              )}
           </select>
 
 
