@@ -9,6 +9,7 @@ import { restoreCSRF, csrfFetch } from './store/csrf';
 
 import * as sessionActions from './store/session';
 
+
 const store = configureStore();
 
 if (process.env.NODE_ENV !== 'production') {
@@ -21,11 +22,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 function Root() {
   return (
-    <ReduxProvider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ReduxProvider>
+      <ReduxProvider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ReduxProvider>
   );
 }
 
