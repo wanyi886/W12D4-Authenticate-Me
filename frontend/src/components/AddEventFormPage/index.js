@@ -2,18 +2,23 @@ import './AddEventFormPage.css';
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import { getEventCategories } from '../../store/event';
+import { getEventCategories, postEvent } from '../../store/event';
 
 
 
 const AddEventFormPage = () => {
-  const eventCategories = useSelector(state => state.event.categories);
+  const history = useHistory();
   const dispatch = useDispatch();
+
+  const eventCategories = useSelector(state => state.event.categories);
+  const sessionUser = useSelector(state => state.session.user);
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState(eventCategories[0]); // Need to check, since it's a dropdown
+  const [categoryId, setCategoryId ] = useState(1);
   const [imgUrl, setImgUrl] = useState('');
   const [price, setPrice] = useState(0);
   const [date, setDate] = useState('');
@@ -21,6 +26,7 @@ const AddEventFormPage = () => {
   const [endTime, setEndTime] = useState('');
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
+  const [state, setState] = useState('')
   const [zipCode, setZipCode] = useState('');
   const [errors, setErrors] = useState([]);
 
@@ -29,10 +35,42 @@ const AddEventFormPage = () => {
     dispatch(getEventCategories())
   }, [dispatch])
 
+  useEffect(() => {
+    const cate = eventCategories.find(element => element.type === category);
+    setCategoryId(cate.id);
+  }, [category])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      hostId: sessionUser.id,
+      title,
+      description,
+      categoryId,
+      imgUrl,
+      price,
+      date,
+      startTime,
+      endTime,
+      address,
+      city,
+      state,
+      zipCode
+    }
+    console.log("payload!!!!!!!",payload);
+    
+    let createdEvent = await dispatch(postEvent(payload));
+
+    if (createdEvent) {
+      history.pushState(`/event/${createdEvent.id}`)
+    }
+  }
+
   return (
     <div className='form-container'>
       <h1>Create an Event</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
       <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
@@ -63,7 +101,7 @@ const AddEventFormPage = () => {
         </div>
 
         <div>
-          <label htmlFor='category'>Select a Type for your event</label>
+          <label htmlFor='category'>Select a Category</label>
         </div>
           <select
             name="category"
@@ -71,13 +109,13 @@ const AddEventFormPage = () => {
             value={category}
           >
             {eventCategories.map(category =>
-              <option key={category.type}>{category.type}</option>
+              <option key={category.id}>{category.type}</option>
               )}
           </select>
 
 
         <div>
-          <label htmlFor='imgUrl'>The URL of your Image</label>
+          <label htmlFor='imgUrl'>The image URL of the event</label>
         </div>
         <div>
           <input
@@ -176,8 +214,8 @@ const AddEventFormPage = () => {
             type="text"
             name="city"
             placeholder='Ex: CA'
-            value={city}
-            onChange={e => setCity(e.target.value)}
+            value={state}
+            onChange={e => setState(e.target.value)}
             >
           </input>
         </div>

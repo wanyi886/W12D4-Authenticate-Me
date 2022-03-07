@@ -52,6 +52,7 @@ export const postEvent = (data) => async dispatch => {
 }
 
 const initialState = {
+  eventList: [],
   categories: [],
 }
 
@@ -75,7 +76,7 @@ const eventReducer = (state = initialState, action) => {
       }
     case ADD_ONE:
       const newState = {...state, [action.event.id]: action.event};
-
+      return newState;
     default:
       return state;
   }
