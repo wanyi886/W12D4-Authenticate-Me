@@ -6,10 +6,11 @@ const { User } = require('../../db/models')
 
 const sessionRouter = require('./session');
 const usersRouter = require('./users');
+const eventRouter = require('./event')
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
-
+router.use('/event', eventRouter);
 
 router.post('/test', function(req, res) {
   res.json({ requestBody: req.body });

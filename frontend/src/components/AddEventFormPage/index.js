@@ -1,16 +1,19 @@
 import './AddEventFormPage.css';
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
+import { getEventCatogories } from '../../store/event';
 
 
 
 const AddEventFormPage = () => {
+  const eventCategories = useSelector(state => state.event.categories);
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState(''); // Need to check, since it's a dropdown
+  const [category, setCategory] = useState(eventCategories[0]); // Need to check, since it's a dropdown
   const [imgUrl, setImgUrl] = useState('');
   const [price, setPrice] = useState(0);
   const [date, setDate] = useState('');
@@ -19,7 +22,12 @@ const AddEventFormPage = () => {
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [zipCode, setZipCode] = useState('');
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
+  
+
+  useEffect(() => {
+    dispatch(getEventCatogories())
+  }, [dispatch])
 
   return (
     <div className='form-container'>
@@ -53,6 +61,19 @@ const AddEventFormPage = () => {
             >
           </textarea>
         </div>
+
+        <div>
+          <label htmlFor='category'>Event Type</label>
+        </div>
+          <select
+            name="category"
+            onChange={e => setCategory(e.target.value)}
+            value={category}
+          >
+            <option value="" disabled>Select an event type</option>
+
+          </select>
+
 
         <div>
           <label htmlFor='imgUrl'>The URL of your Image</label>
