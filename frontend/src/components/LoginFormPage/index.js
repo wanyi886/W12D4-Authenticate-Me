@@ -27,6 +27,10 @@ function LoginFormPage() {
       });
   }
 
+  const handleClick = () => {
+    return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" }))
+  }
+
   return (
     <>
       <h1>Log In</h1>
@@ -54,7 +58,7 @@ function LoginFormPage() {
         </label>
         <button type="submit">Log In</button>
       </form>
-      <button type="submit">Demo User Log In</button>
+      <button type="submit" onClick={handleClick}>Demo User Log In</button>
     </>
 
   );
