@@ -18,9 +18,8 @@ const EventsBrowser = () => {
       {events.map((event) => {
         return (
           <div className="event-card" key={event.id}>
-              <i src={`${event.imgUrl}`} />
+              <img src={`${event.imgUrl}`} />
             <ul>
-              <li>{event.imgUrl}</li>
               <li>{event.title}</li>
               <li>{event.date}</li>
               <li>{event.startTime} to {event.endTime}</li>
