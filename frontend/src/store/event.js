@@ -28,7 +28,6 @@ export const getAllEvents = () => async dispatch => {
 }
 
 export const getOneEvent = (id) => async dispatch => {
-  console.log("eventid from reducer", id);
   const response = await fetch(`/api/event/${id}`);
   if (response.ok) {
     const event = await response.json();

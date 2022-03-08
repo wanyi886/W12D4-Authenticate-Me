@@ -7,18 +7,10 @@ import './EventDetail.css'
 const EventDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  // const eventList = useSelector(state => state.event.list); // This is an empty array
-  // console.log("eventList!!!!!!", eventList);
-
-  console.log("eventID", id);
-  // const event = eventList.find(event => event.id === Number(id));
 
   const event = useSelector(state => state.event[id]);
 
-  const date = new Date(event?.date);
-  console.log(date)
-
-  console.log("event from useSelector in EventDetail", event);
+  // const date = new Date(event?.date);
 
   useEffect(() => {
 
