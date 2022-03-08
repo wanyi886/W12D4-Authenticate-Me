@@ -37,7 +37,7 @@ const AddEventFormPage = () => {
 
   useEffect(() => {
     const cate = eventCategories.find(element => element.type === category);
-    setCategoryId(cate.id);
+    // setCategoryId(cate.id);
   }, [category])
 
   const handleSubmit = async (e) => {
@@ -61,9 +61,9 @@ const AddEventFormPage = () => {
 
     let createdEvent = await dispatch(postEvent(payload));
 
-    // if (createdEvent) {
-    //   history.pushState(`/event/${createdEvent.id}`)
-    // }
+    if (createdEvent) {
+      history.pushState(`/event/${createdEvent.id}`)
+    }
   }
 
   return (

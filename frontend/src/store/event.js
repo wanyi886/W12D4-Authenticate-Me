@@ -65,7 +65,7 @@ const eventReducer = (state = initialState, action) => {
       const allEvents = {}
       action.list.forEach(event => {
         allEvents[event.id] = event;
-      });
+      })
       return {
         ...allEvents,
         ...state,
