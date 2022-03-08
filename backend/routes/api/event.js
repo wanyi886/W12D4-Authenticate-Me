@@ -67,4 +67,11 @@ router.get('/:id', asyncHandler(async (req, res) => {
   return res.json(event);
 }));
 
+// update one event
+router.get('/:id', validateCreatingEvent, asyncHandler(async(req, res) => {
+  const id = await Event.update(req.body);
+  const event = await Event.findByPk(id);
+  return res.json(event);
+}))
+
 module.exports = router;
