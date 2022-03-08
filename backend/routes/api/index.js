@@ -2,7 +2,7 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth');
 const { restoreUser, requireAuth } = require( '../../utils/auth');
-const { User } = require('../../db/models')
+const { User, Event } = require('../../db/models')
 
 const sessionRouter = require('./session');
 const usersRouter = require('./users');
@@ -37,5 +37,10 @@ router.get('/require-auth', requireAuth, asyncHandler(async(req, res) => {
   return res.json(req.user);
 }))
 
+router.get('/', asyncHandler(async(req, res) => {
+  const events = await Event.findAll();
+  // console.log("events from route handler!!!", events[0])
+  return res.json(events);
+}))
 
 module.exports = router;

@@ -57,8 +57,9 @@ const validateCreatingEvent = [
 // create an event
 router.post('/', validateCreatingEvent, asyncHandler(async(req, res) => {
   const newEvent = await Event.create(req.body);
-  
-  // return res.redirect(`${req.baseUrl}/${newEvent.id}`);
+
+  return res.redirect(`${req.baseUrl}/${newEvent.id}`);
+  // TODO: need to add redirect after building up /event/:id route
 }))
 
 module.exports = router;
