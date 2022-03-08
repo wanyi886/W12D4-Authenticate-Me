@@ -86,6 +86,9 @@ const eventReducer = (state = initialState, action) => {
       }
     case ADD_ONE:
       const newState = {...state, [action.event.id]: action.event};
+      const eventList = newState.list.map(id => newState[id]);
+      eventList.push(action.event);
+      newState.list = eventList
       return newState;
     default:
       return state;
