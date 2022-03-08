@@ -38,8 +38,9 @@ router.get('/require-auth', requireAuth, asyncHandler(async(req, res) => {
 }))
 
 router.get('/', asyncHandler(async(req, res) => {
-  const events = await Event.findAll();
-  // console.log("events from route handler!!!", events[0])
+  const events = await Event.findAll({
+    order: [['id', 'DESC']]
+  });
   return res.json(events);
 }))
 

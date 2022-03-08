@@ -20,17 +20,15 @@ const addOneEvent = event => ({
 });
 
 export const getAllEvents = () => async dispatch => {
-  // console.log("OMG")
   const response = await fetch('/api');
-  // console.log("response", response)
   if (response.ok) {
     const list = await response.json();
-    // console.log("eventList!!!!!!", eventList)
     dispatch(load(list));
   }
 }
 
 export const getOneEvent = (id) => async dispatch => {
+  console.log("eventid from reducer", id);
   const response = await fetch(`/api/event/${id}`);
   if (response.ok) {
     const event = await response.json();
@@ -59,7 +57,13 @@ export const postEvent = (data) => async dispatch => {
     dispatch(addOneEvent(event));
     return event;
   }
+}
 
+export const editEvent = (data) => async dispatch => {
+  const response = await csrfFetch('api/event', {
+    method: "PUT",
+    headers: { 'Content-Type': 'application/json'}
+  })
 }
 
 const initialState = {
@@ -86,7 +90,7 @@ const eventReducer = (state = initialState, action) => {
       }
     case ADD_ONE:
       const newState = {...state, [action.event.id]: action.event};
-      const eventList = newState.list.map(id => newState[id]);
+      const eventList = newState.list.map(event => newState[event.id]);
       eventList.push(action.event);
       newState.list = eventList
       return newState;
