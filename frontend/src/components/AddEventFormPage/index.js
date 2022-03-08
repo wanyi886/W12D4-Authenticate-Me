@@ -36,10 +36,30 @@ const AddEventFormPage = () => {
   }, [dispatch])
 
   useEffect(() => {
-
     const cate = eventCategories.find(element => element.type === category);
     if (cate) setCategoryId(cate.id);
   }, [category])
+
+  useEffect(() => {
+    const errors = [];
+    if (!title) errors.push("Title cannot be empty.");
+    if (!description) errors.push("Description cannot be empty.");
+    if (!category) errors.push("Please select a category.");
+    if (!imgUrl) errors.push("Image URl cannot be empty.");
+    if (!price) errors.push("Price cannot be empty.");
+    if (price < 0) errors.push("Price cannot be less than 0.");
+    if (!date) errors.push("Date cannot be empty.");
+    if (!startTime) errors.push("Start Time cannot be empty.");
+    if (!endTime) errors.push("End Time cannot be empty.");
+    if (!address) errors.push("Address cannot be empty.");
+    if (!city) errors.push("City cannot be empty.");
+    if (!state) errors.push("State cannot be empty.");
+    if (!zipCode) errors.push("Zipcode cannot be empty.");
+    if (zipCode.length !== 5) errors.push("Zipcode should be 5 digits.");
+
+    setErrors(errors);
+
+  }, [title, description, category, imgUrl, price, date, startTime, endTime, address, city, state, zipCode])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,7 +92,7 @@ const AddEventFormPage = () => {
       <h1>Create an Event</h1>
       <form onSubmit={handleSubmit}>
       <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <div>
           <label htmlFor='title'>Title</label>
@@ -136,6 +156,7 @@ const AddEventFormPage = () => {
             type="number"
             name="price"
             value={price}
+            min={0}
             onChange={e => setPrice(e.target.value)}>
           </input>
         </div>
@@ -233,7 +254,10 @@ const AddEventFormPage = () => {
             >
           </input>
         </div>
-        <button type="submit">Submit</button>
+        <button
+          type="submit"
+          disabled={errors? true : false}
+          >Submit</button>
       </form>
     </div>
   )
