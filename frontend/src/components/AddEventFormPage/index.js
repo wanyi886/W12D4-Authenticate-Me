@@ -58,13 +58,12 @@ const AddEventFormPage = () => {
       state,
       zipCode
     }
-    console.log("payload!!!!!!!",payload);
-    
+
     let createdEvent = await dispatch(postEvent(payload));
 
-    if (createdEvent) {
-      history.pushState(`/event/${createdEvent.id}`)
-    }
+    // if (createdEvent) {
+    //   history.pushState(`/event/${createdEvent.id}`)
+    // }
   }
 
   return (

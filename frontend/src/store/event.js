@@ -20,10 +20,13 @@ const addOneEvent = event => ({
 });
 
 export const getAllEvents = () => async dispatch => {
-  const response = await fetch('/api/event');
+  // console.log("OMG")
+  const response = await fetch('/api');
+  // console.log("response", response)
   if (response.ok) {
-    const eventList = await response.json();
-    dispatch(load(eventList));
+    const list = await response.json();
+    // console.log("eventList!!!!!!", eventList)
+    dispatch(load(list));
   }
 }
 
@@ -52,7 +55,7 @@ export const postEvent = (data) => async dispatch => {
 }
 
 const initialState = {
-  eventList: [],
+  list: [],
   categories: [],
 }
 
@@ -60,15 +63,14 @@ const eventReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD:
       const allEvents = {}
-      action.eventList.forEach(event => {
+      action.list.forEach(event => {
         allEvents[event.id] = event;
       });
       return {
         ...allEvents,
         ...state,
-        eventList: action.eventList
+        list: action.list
       }
-
     case LOAD_CATEGORIES:
       return {
         ...state,
