@@ -6,24 +6,30 @@ import { getAllEvents, getOneEvent } from "../../store/event";
 const EventDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  // const eventList = useSelector(state => state.event.list); // This is an empty array
+  // console.log("eventList!!!!!!", eventList);
 
   console.log("eventID", id);
   // const event = eventList.find(event => event.id === Number(id));
 
-  const event = useSelector(state => state.event[id])
+  const event = useSelector(state => state.event[id]);
 
-  console.log("event", event);
+  console.log("event from useSelector in EventDetail", event);
 
   useEffect(() => {
-    dispatch(getOneEvent(id));
+
+      // dispatch(getAllEvents());
+      dispatch(getOneEvent(id));
+
   }, [dispatch])
 
   return (
     <div>
-      <h1>{event.title}</h1>
+      <h2>Event Detail Page</h2>
+      <h2>{event?.title}</h2>
       <button type="submit">Register</button>
       <ul>
-        <li>{event.title}</li>
+        <li>{event?.description}</li>
       </ul>
     </div>
   )
