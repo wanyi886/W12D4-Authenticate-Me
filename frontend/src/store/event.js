@@ -28,6 +28,7 @@ export const getAllEvents = () => async dispatch => {
 }
 
 export const getOneEvent = (id) => async dispatch => {
+  console.log("eventid from reducer", id);
   const response = await fetch(`/api/event/${id}`);
   if (response.ok) {
     const event = await response.json();
@@ -56,7 +57,13 @@ export const postEvent = (data) => async dispatch => {
     dispatch(addOneEvent(event));
     return event;
   }
+}
 
+export const editEvent = (data) => async dispatch => {
+  const response = await csrfFetch('api/event', {
+    method: "PUT",
+    headers: { 'Content-Type': 'application/json'}
+  })
 }
 
 const initialState = {
