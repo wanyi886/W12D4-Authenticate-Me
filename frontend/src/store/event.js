@@ -20,12 +20,9 @@ const addOneEvent = event => ({
 });
 
 export const getAllEvents = () => async dispatch => {
-  // console.log("OMG")
   const response = await fetch('/api');
-  // console.log("response", response)
   if (response.ok) {
     const list = await response.json();
-    // console.log("eventList!!!!!!", eventList)
     dispatch(load(list));
   }
 }
