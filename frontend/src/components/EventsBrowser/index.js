@@ -20,8 +20,9 @@ const EventsBrowser = () => {
 
             <div className="event-card" key={event.id}>
                 <img src={`${event.imgUrl}`} style={{width: "200px"}}/>
+            <div>{event.title}</div>
               <ul>
-                <li>{event.title}</li>
+                <li>Id: {event.id}</li>
                 <li>{event.date}</li>
                 <li>{event.startTime} - {event.endTime}</li>
                 <li>$ {event.price}</li>

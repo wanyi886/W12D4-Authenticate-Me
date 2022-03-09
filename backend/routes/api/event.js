@@ -67,17 +67,21 @@ router.get('/:id', asyncHandler(async (req, res) => {
   return res.json(event);
 }));
 
-// // get edit form
-// router.get('/:id/edit', asyncHandler(async (req, res) => {
-//   const event = await Event.findByPk(req.params.id);
-//   return res.json(event);
-// }));
-
 // update one event
-router.put('/:id/edit', validateCreatingEvent, asyncHandler(async(req, res) => {
+router.put('/:id', validateCreatingEvent, asyncHandler(async(req, res) => {
   const id = await Event.update(req.body);
   const event = await Event.findByPk(id);
   return res.json(event);
 }))
+
+router.delete('/:id', asyncHandler(async function (req, res) {
+  const id = req.params.id;
+  const event = await Event.findByPk(id);
+
+  if(!event) throw new Error('Cannot find item');
+
+  await event.destroy();
+  return res.json({messege: "seccess"});
+}));
 
 module.exports = router;

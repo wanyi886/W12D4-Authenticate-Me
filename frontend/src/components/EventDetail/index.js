@@ -1,14 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
-import { getAllEvents, getOneEvent } from "../../store/event";
+import { deleteEvent, getAllEvents, getOneEvent } from "../../store/event";
 import './EventDetail.css'
 import EditEventFormPage from "../EditEventFormPage";
 
 const EventDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-
+  const history = useHistory();
+  
   const event = useSelector(state => state.event[id]);
   const sessionUser = useSelector(state => state.session.user);
   const ownEvent = sessionUser.id === event?.hostId;
@@ -21,6 +22,12 @@ const EventDetail = () => {
       // dispatch(getAllEvents());
       dispatch(getOneEvent(id));
   }, [dispatch]);
+
+  const handleDeleteClick = (e) => {
+    e.preventDefault();
+    dispatch(deleteEvent(id));
+    history.push('/')
+  }
 
   let content = null;
 
@@ -48,7 +55,7 @@ const EventDetail = () => {
       <div>
         {/* <button type="button">Register</button> */}
          {event && ownEvent ? <button type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button type="button">Register</button>}
-         {event && ownEvent ? <button>Delete</button> : null}
+         {event && ownEvent ? <button type="button" onClick={handleDeleteClick}>Delete</button> : null}
       </div>
     </div>
     )

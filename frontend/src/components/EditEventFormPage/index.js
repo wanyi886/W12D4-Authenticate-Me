@@ -15,10 +15,12 @@ const EditEventFormPage = ({event}) => {
   const eventCategories = useSelector(state => state.event.categories);
   const sessionUser = useSelector(state => state.session.user);
 
+  const eventCategory = eventCategories.find(category => category.id === event.categoryId)
+
   const [title, setTitle] = useState(event.title);
   const [description, setDescription] = useState(event.description);
   const [categoryId, setCategoryId ] = useState(event.categoryId);
-  const [category, setCategory] = useState(event.category); // Need to check, since it's a dropdown
+  const [category, setCategory] = useState(eventCategory); // Need to check, since it's a dropdown
   const [imgUrl, setImgUrl] = useState(event.imgUrl);
   const [price, setPrice] = useState(event.price);
   const [date, setDate] = useState(event.date.slice(0,10));
@@ -88,6 +90,13 @@ const EditEventFormPage = ({event}) => {
     if (updatedEvent) {
       history.push(`/event/${updatedEvent.id}`)
     }
+  }
+
+  // TODO: not working yet, maybe define two content too?
+  const handleCancelClick = (e) => {
+    e.preventDefault();
+    // dispatch(getOneEvent(event.id))
+    history.push(`/event/${event.id}`)
   }
 
   return (
@@ -259,9 +268,9 @@ const EditEventFormPage = ({event}) => {
         </div>
         <button
           type="submit"
-          disabled={errors? true : false}
+          // disabled={errors? true : false}
           >Submit</button>
-        <button type="button">Cancel</button>
+        <button type="button" onClick={handleCancelClick}>Cancel</button>
       </form>
     </div>
   )
