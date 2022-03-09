@@ -120,7 +120,7 @@ const eventReducer = (state = initialState, action) => {
       return newState;
     case DELETE:
       const events = {...state};
-      delete events[action.event.id];
+      delete events[action.event.id]; // TODO: Can delete successfully, but will show error message: Cannot read properties of undefined (reading 'id')
       return events;
     default:
       return state;
