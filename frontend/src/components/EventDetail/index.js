@@ -9,6 +9,8 @@ const EventDetail = () => {
   const { id } = useParams();
 
   const event = useSelector(state => state.event[id]);
+  const sessionUser = useSelector(state => state.session.user);
+  const ownEvent = sessionUser.id === event?.hostId
 
   // const date = new Date(event?.date);
 
@@ -34,10 +36,15 @@ const EventDetail = () => {
       <div>Location</div>
       <div>{event?.address}</div>
       <div>{event?.city}, {event?.state} {event?.zipCode}</div>
-      <div></div>
-      <button type="button">Register</button>
+      <div>{event?.hostId}</div>
+      <div>
+        {/* <button type="button">Register</button> */}
+         {event && ownEvent ? <button >Edit</button> : <button type="button">Register</button>}
+         {event && ownEvent ? <button>Delete</button> : null}
+      </div>
     </div>
   )
+
 }
 
 export default EventDetail;
