@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { NavLink, Route, useParams } from 'react-router-dom';
+import { Link, NavLink, Route, useParams } from 'react-router-dom';
 import { getAllEvents } from "../../store/event";
 
 const EventsBrowser = () => {
@@ -17,9 +17,11 @@ const EventsBrowser = () => {
       <h2>Hi from Event Browser</h2>
       {events.map((event) => {
         return (
-
-            <div className="event-card" key={event.id}>
+        <Link to={`/event/${event.id}`} key={event.id}>
+          <div className="event-card" >
+            <div className="event-img" >
                 <img src={`${event.imgUrl}`} style={{width: "200px"}}/>
+                  <a href={`/event/${event.id}`}></a>
             <div>{event.title}</div>
               <ul>
                 <li>Id: {event.id}</li>
@@ -28,6 +30,8 @@ const EventsBrowser = () => {
                 <li>$ {event.price}</li>
               </ul>
             </div>
+          </div>
+        </Link>
         )
       })}
     </div>
