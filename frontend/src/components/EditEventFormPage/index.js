@@ -21,7 +21,7 @@ const EditEventFormPage = ({event}) => {
   const [category, setCategory] = useState(event.category); // Need to check, since it's a dropdown
   const [imgUrl, setImgUrl] = useState(event.imgUrl);
   const [price, setPrice] = useState(event.price);
-  const [date, setDate] = useState(event.date);
+  const [date, setDate] = useState(event.date.slice(0,10));
   const [startTime, setStartTime] = useState(event.startTime);
   const [endTime, setEndTime] = useState(event.endTime);
   const [address, setAddress] = useState(event.address);
@@ -66,7 +66,7 @@ const EditEventFormPage = ({event}) => {
 
     const payload = {
       ...event,
-      // hostId,
+      hostId: event.hostId,
       title,
       description,
       categoryId,
