@@ -86,7 +86,7 @@ export const deleteEvent = (id) => async dispatch => {
   })
 
   if (response.ok) {
-    // const event = await response.json();
+    const event = await response.json();
     dispatch(remove(id));
   }
 }
@@ -121,8 +121,25 @@ const eventReducer = (state = initialState, action) => {
       return newState;
     case DELETE:
       const events = {...state};
-      delete events[action.event.id]; // TODO: Can delete successfully, but will show error message: Cannot read properties of undefined (reading 'id')
+      delete events[action.id]; // TODO: Can delete successfully, but will show error message: Cannot read properties of undefined (reading 'id')
+      // return everything as an array except the one we deleted
+      // const filteredEvent = events.list.filter(event => (
+      //   event.id !== action.id
+      // ));
+      //   console.log("filteredEvent", filteredEvent)
+
+      // events.list = [...filteredEvent];
       return events;
+
+      // case REMOVE_ITEM:
+      //   return {
+      //     ...state,
+      //     [action.pokemonId]: {
+      //       ...state[action.pokemonId],
+      //       items: state[action.pokemonId].items.filter(
+      //         (itemId) => itemId !== action.itemId
+      //       )
+      //   }
     default:
       return state;
   }

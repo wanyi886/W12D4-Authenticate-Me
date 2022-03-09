@@ -13,15 +13,19 @@ const EditEventFormPage = ({event, hideForm}) => {
   const dispatch = useDispatch();
 
   const eventCategories = useSelector(state => state.event.categories);
-  console.log(eventCategories)
+  console.log("eventCategories", eventCategories)
+  const eventCategory = eventCategories.find(category => category.id === event.categoryId);
+  console.log("event.Category", eventCategory)
+
   const sessionUser = useSelector(state => state.session.user);
 
-  const eventCategory = eventCategories.find(category => category.id === event.categoryId)
+
 
   const [title, setTitle] = useState(event.title);
   const [description, setDescription] = useState(event.description);
   const [categoryId, setCategoryId ] = useState(event.categoryId);
-  const [category, setCategory] = useState(eventCategory); // Need to check, since it's a dropdown
+
+  const [category, setCategory] = useState(eventCategory.type); // Need to check, since it's a dropdown
   const [imgUrl, setImgUrl] = useState(event.imgUrl);
   const [price, setPrice] = useState(event.price);
   const [date, setDate] = useState(event.date.slice(0,10));

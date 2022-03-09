@@ -5,7 +5,8 @@ import { getAllEvents } from "../../store/event";
 
 const EventsBrowser = () => {
   const dispatch = useDispatch();
-  const events = useSelector(state => state.event.list);
+  const events = useSelector(state => state.event);
+  const eventArray = Object.values(events)
   useEffect(() => {
     dispatch(getAllEvents())
   }, [dispatch]);
@@ -15,7 +16,7 @@ const EventsBrowser = () => {
   return (
     <div>
       <h2>Hi from Event Browser</h2>
-      {events.map((event) => {
+      {eventArray.map((event) => {
         return (
           <div className="event-card" key={event.id} style={{width: "300px"}}>
             <Link to={`/event/${event.id}`} >
