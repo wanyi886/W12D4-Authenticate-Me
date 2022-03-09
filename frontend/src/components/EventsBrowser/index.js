@@ -17,11 +17,10 @@ const EventsBrowser = () => {
       <h2>Hi from Event Browser</h2>
       {events.map((event) => {
         return (
-          <div className="event-card" style={{width: "300px"}}>
-            <Link to={`/event/${event.id}`} key={event.id}>
+          <div className="event-card" key={event.id} style={{width: "300px"}}>
+            <Link to={`/event/${event.id}`} >
                 <div className="event-img" >
                     <img src={`${event.imgUrl}`} style={{width: "200px"}}/>
-                      <a href={`/event/${event.id}`}></a>
                 <div>{event.title}</div>
                   <ul>
                     <li>Id: {event.id}</li>

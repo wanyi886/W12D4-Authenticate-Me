@@ -86,7 +86,7 @@ router.delete('/:id', asyncHandler(async function (req, res) {
   if(!event) throw new Error('Cannot find item');
 
   await event.destroy();
-  return res.json({messege: "seccess"});
+  return res.json(id);
 }));
 
 module.exports = router;

@@ -13,6 +13,7 @@ const EditEventFormPage = ({event, hideForm}) => {
   const dispatch = useDispatch();
 
   const eventCategories = useSelector(state => state.event.categories);
+  console.log(eventCategories)
   const sessionUser = useSelector(state => state.session.user);
 
   const eventCategory = eventCategories.find(category => category.id === event.categoryId)
@@ -48,7 +49,7 @@ const EditEventFormPage = ({event, hideForm}) => {
     if (!description) errors.push("Description cannot be empty.");
     if (!category) errors.push("Please select a category.");
     if (!imgUrl) errors.push("Image URl cannot be empty.");
-    if (!price) errors.push("Price cannot be empty.");
+    // if (!price) errors.push("Price cannot be empty.");
     if (price < 0) errors.push("Price cannot be less than 0.");
     if (!date) errors.push("Date cannot be empty.");
     if (!startTime) errors.push("Start Time cannot be empty.");

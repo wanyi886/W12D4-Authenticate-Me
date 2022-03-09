@@ -46,7 +46,7 @@ const AddEventFormPage = () => {
     if (!description) errors.push("Description cannot be empty.");
     if (!category) errors.push("Please select a category.");
     if (!imgUrl) errors.push("Image URl cannot be empty.");
-    if (!price) errors.push("Price cannot be empty.");
+    // if (!price) errors.push("Price cannot be empty.");
     if (price < 0) errors.push("Price cannot be less than 0.");
     if (!date) errors.push("Date cannot be empty.");
     if (!startTime) errors.push("Start Time cannot be empty.");
@@ -256,7 +256,7 @@ const AddEventFormPage = () => {
         </div>
         <button
           type="submit"
-          disabled={errors? true : false}
+          // disabled={errors? true : false}
           >Submit</button>
       </form>
     </div>
