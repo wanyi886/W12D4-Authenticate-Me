@@ -17,7 +17,7 @@ const EditEventFormPage = ({event}) => {
 
   const [title, setTitle] = useState(event.title);
   const [description, setDescription] = useState(event.description);
-  const [categoryId, setCategoryId ] = useState(event.ategoryId);
+  const [categoryId, setCategoryId ] = useState(event.categoryId);
   const [category, setCategory] = useState(event.category); // Need to check, since it's a dropdown
   const [imgUrl, setImgUrl] = useState(event.imgUrl);
   const [price, setPrice] = useState(event.price);
@@ -261,6 +261,7 @@ const EditEventFormPage = ({event}) => {
           type="submit"
           disabled={errors? true : false}
           >Submit</button>
+        <button type="button">Cancel</button>
       </form>
     </div>
   )
