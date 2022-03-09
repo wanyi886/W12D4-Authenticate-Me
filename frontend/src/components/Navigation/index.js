@@ -12,8 +12,8 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-        <NavLink to="/add-event">Create an Event</NavLink>
-        <ProfileButton user={sessionUser} />
+        <NavLink to="/add-event" >Create an Event</NavLink>
+        <ProfileButton  user={sessionUser} />
       </>
 
     );

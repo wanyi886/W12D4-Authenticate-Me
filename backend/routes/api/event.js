@@ -71,11 +71,8 @@ router.get('/:id', asyncHandler(async (req, res) => {
 router.put('/:id', validateCreatingEvent, asyncHandler(async(req, res) => {
   const id = req.params.id;
   const event = await Event.findByPk(id);
-  // console.log("event from route handler~~", event)
 
   const { ...updatedEvent } = req.body
-  console.log("req.body HERE!!!!!", req.body)
-  console.log("updatedEvent from route handler!!!!!", updatedEvent);
 
   await event.update(updatedEvent)
 
