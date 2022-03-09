@@ -9,7 +9,7 @@ const EventDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const history = useHistory();
-  
+
   const event = useSelector(state => state.event[id]);
   const sessionUser = useSelector(state => state.session.user);
   const ownEvent = sessionUser.id === event?.hostId;
@@ -33,7 +33,7 @@ const EventDetail = () => {
 
   if (event && showEditForm) {
     content = (
-      <EditEventFormPage event={event}/>
+      <EditEventFormPage event={event} hideForm={() => setShowEditForm(false)}/>
     )
   } else {
     content = (

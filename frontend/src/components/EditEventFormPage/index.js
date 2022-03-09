@@ -8,7 +8,7 @@ import { getEventCategories, editEvent, getOneEvent } from '../../store/event';
 
 
 
-const EditEventFormPage = ({event}) => {
+const EditEventFormPage = ({event, hideForm}) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -88,15 +88,16 @@ const EditEventFormPage = ({event}) => {
     let updatedEvent = await dispatch(editEvent(payload));
 
     if (updatedEvent) {
-      history.push(`/event/${updatedEvent.id}`)
+      hideForm();
     }
   }
 
   // TODO: not working yet, maybe define two content too?
   const handleCancelClick = (e) => {
     e.preventDefault();
-    // dispatch(getOneEvent(event.id))
-    history.push(`/event/${event.id}`)
+    dispatch(getOneEvent(event.id))
+
+    // history.push(`/event/${event.id}`)
   }
 
   return (
