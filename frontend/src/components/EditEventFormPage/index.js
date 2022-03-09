@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory} from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import { getEventCategories, editEvent } from '../../store/event';
+import { getEventCategories, editEvent, getOneEvent } from '../../store/event';
 
 
 
@@ -15,24 +15,24 @@ const EditEventFormPage = ({event}) => {
   const eventCategories = useSelector(state => state.event.categories);
   const sessionUser = useSelector(state => state.session.user);
 
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [category, setCategory] = useState(eventCategories[0]); // Need to check, since it's a dropdown
-  const [categoryId, setCategoryId ] = useState(1);
-  const [imgUrl, setImgUrl] = useState('');
-  const [price, setPrice] = useState(0);
-  const [date, setDate] = useState('');
-  const [startTime, setStartTime] = useState('');
-  const [endTime, setEndTime] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('')
-  const [zipCode, setZipCode] = useState('');
+  const [title, setTitle] = useState(event.title);
+  const [description, setDescription] = useState(event.description);
+  const [categoryId, setCategoryId ] = useState(event.ategoryId);
+  const [category, setCategory] = useState(event.category); // Need to check, since it's a dropdown
+  const [imgUrl, setImgUrl] = useState(event.imgUrl);
+  const [price, setPrice] = useState(event.price);
+  const [date, setDate] = useState(event.date);
+  const [startTime, setStartTime] = useState(event.startTime);
+  const [endTime, setEndTime] = useState(event.endTime);
+  const [address, setAddress] = useState(event.address);
+  const [city, setCity] = useState(event.city);
+  const [state, setState] = useState(event.state)
+  const [zipCode, setZipCode] = useState(event.zipCode);
   const [errors, setErrors] = useState([]);
 
 
   useEffect(() => {
-    dispatch(getEventCategories())
+    dispatch(getEventCategories());
   }, [dispatch])
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const EditEventFormPage = ({event}) => {
 
     const payload = {
       ...event,
-      hostId,
+      // hostId,
       title,
       description,
       categoryId,
@@ -81,7 +81,9 @@ const EditEventFormPage = ({event}) => {
       zipCode
     }
 
-    let updatedEvent = await dispatch(postEvent(payload));
+    console.log("event in edit form", event)
+
+    let updatedEvent = await dispatch(editEvent(payload));
 
     if (updatedEvent) {
       history.push(`/event/${updatedEvent.id}`)

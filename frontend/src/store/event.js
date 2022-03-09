@@ -58,8 +58,10 @@ export const postEvent = (data) => async dispatch => {
   }
 }
 
+
+
 export const editEvent = (data) => async dispatch => {
-  const response = await csrfFetch(`api/event/${data.id}`, {
+  const response = await csrfFetch(`api/event/${data.id}/edit`, {
     method: "PUT",
     headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify(data)

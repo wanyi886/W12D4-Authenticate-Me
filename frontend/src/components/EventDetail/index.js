@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAllEvents, getOneEvent } from "../../store/event";
 import './EventDetail.css'
+import EditEventFormPage from "../EditEventFormPage";
 
 const EventDetail = () => {
   const dispatch = useDispatch();
@@ -10,19 +11,26 @@ const EventDetail = () => {
 
   const event = useSelector(state => state.event[id]);
   const sessionUser = useSelector(state => state.session.user);
-  const ownEvent = sessionUser.id === event?.hostId
+  const ownEvent = sessionUser.id === event?.hostId;
+
+  const [ showEditForm, setShowEditForm ] = useState(false);
 
   // const date = new Date(event?.date);
 
   useEffect(() => {
-
       // dispatch(getAllEvents());
       dispatch(getOneEvent(id));
+  }, [dispatch]);
 
-  }, [dispatch])
+  let content = null;
 
-  return (
-    <div className="event-detail-container">
+  if (event && showEditForm) {
+    content = (
+      <EditEventFormPage event={event}/>
+    )
+  } else {
+    content = (
+      <div className="event-detail-container">
       <h2>{event?.title}</h2>
       <div  className="event-detail-img">
         <img src={event?.imgUrl} style={{width: "800px"}}/>
@@ -39,9 +47,16 @@ const EventDetail = () => {
       <div>{event?.hostId}</div>
       <div>
         {/* <button type="button">Register</button> */}
-         {event && ownEvent ? <button >Edit</button> : <button type="button">Register</button>}
+         {event && ownEvent ? <button type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button type="button">Register</button>}
          {event && ownEvent ? <button>Delete</button> : null}
       </div>
+    </div>
+    )
+  }
+
+  return (
+    <div >
+     {content}
     </div>
   )
 
