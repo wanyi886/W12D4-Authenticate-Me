@@ -95,9 +95,7 @@ const EditEventFormPage = ({event, hideForm}) => {
   // TODO: not working yet, maybe define two content too?
   const handleCancelClick = (e) => {
     e.preventDefault();
-    dispatch(getOneEvent(event.id))
-
-    // history.push(`/event/${event.id}`)
+    hideForm()
   }
 
   return (
