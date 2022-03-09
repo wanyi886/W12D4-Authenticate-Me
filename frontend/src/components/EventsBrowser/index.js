@@ -17,21 +17,21 @@ const EventsBrowser = () => {
       <h2>Hi from Event Browser</h2>
       {events.map((event) => {
         return (
-        <Link to={`/event/${event.id}`} key={event.id}>
-          <div className="event-card" >
-            <div className="event-img" >
-                <img src={`${event.imgUrl}`} style={{width: "200px"}}/>
-                  <a href={`/event/${event.id}`}></a>
-            <div>{event.title}</div>
-              <ul>
-                <li>Id: {event.id}</li>
-                <li>{event.date}</li>
-                <li>{event.startTime} - {event.endTime}</li>
-                <li>$ {event.price}</li>
-              </ul>
-            </div>
+          <div className="event-card" style={{width: "300px"}}>
+            <Link to={`/event/${event.id}`} key={event.id}>
+                <div className="event-img" >
+                    <img src={`${event.imgUrl}`} style={{width: "200px"}}/>
+                      <a href={`/event/${event.id}`}></a>
+                <div>{event.title}</div>
+                  <ul>
+                    <li>Id: {event.id}</li>
+                    <li>{event.date}</li>
+                    <li>{event.startTime} - {event.endTime}</li>
+                    <li>$ {event.price}</li>
+                  </ul>
+                </div>
+            </Link>
           </div>
-        </Link>
         )
       })}
     </div>
