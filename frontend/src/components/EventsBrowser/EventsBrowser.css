@@ -1,3 +1,11 @@
 .event-card {
   width: 500px;
+  border: 2px blue solid;
+}
+
+.event-card-container {
+  border: 2px red solid;
+  display: flex;
+  align-content: center;
+
 }

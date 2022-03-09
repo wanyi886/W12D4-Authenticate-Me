@@ -97,6 +97,8 @@ const initialState = {
 }
 
 const eventReducer = (state = initialState, action) => {
+  let newState;
+
   switch (action.type) {
     case LOAD:
       const allEvents = {}
@@ -114,7 +116,7 @@ const eventReducer = (state = initialState, action) => {
         categories: action.categories
       }
     case ADD_ONE:
-      const newState = {...state, [action.event.id]: action.event};
+      newState = {...state, [action.event.id]: action.event};
       const eventList = newState.list.map(event => newState[event.id]);
       eventList.push(action.event);
       newState.list = eventList
@@ -130,16 +132,6 @@ const eventReducer = (state = initialState, action) => {
 
       // events.list = [...filteredEvent];
       return events;
-
-      // case REMOVE_ITEM:
-      //   return {
-      //     ...state,
-      //     [action.pokemonId]: {
-      //       ...state[action.pokemonId],
-      //       items: state[action.pokemonId].items.filter(
-      //         (itemId) => itemId !== action.itemId
-      //       )
-      //   }
     default:
       return state;
   }

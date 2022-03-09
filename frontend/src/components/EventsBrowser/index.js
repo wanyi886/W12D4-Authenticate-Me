@@ -8,26 +8,27 @@ const EventsBrowser = () => {
   const events = useSelector(state => state.event);
   const eventArray = Object.values(events)
   useEffect(() => {
-    dispatch(getAllEvents())
+    dispatch(getAllEvents());
+    console.log("events", events)
   }, [dispatch]);
 
-  if(!events) return null;
+  if(!eventArray) return null;
 
   return (
-    <div>
+    <div className="event-card-container">
       <h2>Hi from Event Browser</h2>
       {eventArray.map((event) => {
         return (
-          <div className="event-card" key={event.id} style={{width: "300px"}}>
+          <div className="event-card" key={event?.id} style={{width: "300px"}}>
             <Link to={`/event/${event.id}`} >
                 <div className="event-img" >
-                    <img src={`${event.imgUrl}`} style={{width: "200px"}}/>
-                <div>{event.title}</div>
+                    <img src={`${event?.imgUrl}`} style={{width: "200px"}}/>
+                <div>{event?.title}</div>
                   <ul>
-                    <li>Id: {event.id}</li>
-                    <li>{event.date}</li>
-                    <li>{event.startTime} - {event.endTime}</li>
-                    <li>$ {event.price}</li>
+                    <li>Id: {event?.id}</li>
+                    <li>{event?.date}</li>
+                    <li>{event?.startTime} - {event?.endTime}</li>
+                    <li>$ {event?.price}</li>
                   </ul>
                 </div>
             </Link>
