@@ -95,11 +95,12 @@ const AddEventFormPage = () => {
       <ul>
           {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <div>
+        <div className='form-label'>
           <label htmlFor='title'>Title</label>
         </div>
-        <div>
+        <div className='form-input'>
           <input
+            className='form-input'
             type="text"
             name="title"
             placeholder="Give a name for the event"
@@ -108,10 +109,10 @@ const AddEventFormPage = () => {
           </input>
         </div>
 
-        <div>
+        <div className='form-label'>
           <label htmlFor='description'>Description</label>
         </div>
-        <div>
+        <div className='form-input'>
           <textarea
             name="description"
             placeholder='Tell us More about this event...'
@@ -121,13 +122,14 @@ const AddEventFormPage = () => {
           </textarea>
         </div>
 
-        <div>
+        <div className='form-label'>
           <label htmlFor='category'>Select a Category</label>
         </div>
           <select
             name="category"
             onChange={e => setCategory(e.target.value)}
             value={category}
+            className='form-select'
           >
             {eventCategories.map(category =>
               <option key={category.id}>{category.type}</option>
@@ -135,7 +137,7 @@ const AddEventFormPage = () => {
           </select>
 
 
-        <div>
+        <div className='form-label'>
           <label htmlFor='imgUrl'>The image URL of the event</label>
         </div>
         <div>
@@ -145,28 +147,32 @@ const AddEventFormPage = () => {
             placeholder='Ex: http://123456'
             value={imgUrl}
             onChange={e => setImgUrl(e.target.value)}
+            className='form-input'
             >
           </input>
         </div>
 
-        <div>
+        <div className='form-label'>
           <label htmlFor='price'>Set the Price of Your Event</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="number"
             name="price"
             value={price}
             min={0}
             onChange={e => setPrice(e.target.value)}>
+
           </input>
         </div>
 
-        <div>
+        <div className='form-label'>
           <label htmlFor="date">Event Date</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="date"
             name="date"
             value={date}
@@ -175,11 +181,12 @@ const AddEventFormPage = () => {
           </input>
         </div>
 
-        <div>
+        <div className='form-label'>
           <label htmlFor='startTime'>Event Start Time</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="time"
             name="startTime"
             value={startTime}
@@ -188,11 +195,12 @@ const AddEventFormPage = () => {
           </input>
         </div>
 
-        <div>
-        <label htmlFor='endTime'>Event End Time</label>
+        <div className='form-label'>
+          <label htmlFor='endTime'>Event End Time</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="time"
             name="endTime"
             value={endTime}
@@ -201,11 +209,12 @@ const AddEventFormPage = () => {
           </input>
         </div>
 
-        <div>
-        <label htmlFor='address'>Address</label>
+        <div className='form-label'>
+          <label htmlFor='address'>Address</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="text"
             name="address"
             value={address}
@@ -214,11 +223,12 @@ const AddEventFormPage = () => {
           </input>
         </div>
 
-        <div>
-        <label htmlFor='city'>City</label>
+        <div className='form-label'>
+          <label htmlFor='city'>City</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="text"
             name="city"
             placeholder='Ex. San Francisco'
@@ -228,11 +238,12 @@ const AddEventFormPage = () => {
           </input>
         </div>
 
-        <div>
-        <label htmlFor='state'>State</label>
+        <div className='form-label'>
+          <label htmlFor='state'>State</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="text"
             name="city"
             placeholder='Ex: CA'
@@ -242,11 +253,12 @@ const AddEventFormPage = () => {
           </input>
         </div>
 
-        <div>
-        <label htmlFor='zipCode'>Zipcode</label>
+        <div className='form-label'>
+          <label htmlFor='zipCode'>Zipcode</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="text"
             name="zipCode"
             placeholder='Ex: 91230'

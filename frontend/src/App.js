@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-    
+
       {isLoaded && (
         <Switch>
           <Route exact path="/">
@@ -44,7 +44,7 @@ function App() {
           <Route path="/event/:id/edit">
             <EditEventFormPage />
           </Route>
-          <Route path="/my-tickets">
+          <Route path="/tickets/users/:id">
             <MyTickets />
           </Route>
 

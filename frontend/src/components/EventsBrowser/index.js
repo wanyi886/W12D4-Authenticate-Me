@@ -21,9 +21,9 @@ const EventsBrowser = () => {
     <>
 
     <div className="splash">
-      <img src={splashImg} alt={"splash"}/>
+      {/* <img src={splashImg} alt={"splash"}/> */}
     </div>
-    <div className="card-container">
+    <div className="container">
       {/* <h2>Hi from Event Browser</h2> */}
       {eventArray.map((event) => {
         return (

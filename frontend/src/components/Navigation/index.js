@@ -14,7 +14,7 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <NavLink to="/add-event" >Create an Event</NavLink>
-        <NavLink to="/my-tickets">My Tickets</NavLink>
+        <NavLink to={`/tickets/users/${sessionUser.id}`}>My Tickets</NavLink>
         {/* <NavLink to="/my-events">My Events</NavLink> */}
           <ProfileButton  user={sessionUser} />
 
