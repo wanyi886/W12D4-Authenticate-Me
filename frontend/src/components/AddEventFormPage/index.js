@@ -4,15 +4,15 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory} from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import { getEventCategories, postEvent } from '../../store/event';
-
+import { postEvent } from '../../store/event';
+import { getEventCategories } from '../../store/category';
 
 
 const AddEventFormPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const eventCategories = useSelector(state => state.event.categories);
+  const eventCategories = useSelector(state => state.categories);
   const sessionUser = useSelector(state => state.session.user);
 
   const [title, setTitle] = useState('');

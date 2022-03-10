@@ -8,11 +8,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-// get event types
-router.get('/categories', asyncHandler(async function(req, res) {
-  const categories = await Category.findAll({});
-  return res.json(categories);
-}))
+
 
 
 const validateCreatingEvent = [
@@ -88,5 +84,7 @@ router.delete('/:id', asyncHandler(async function (req, res) {
   await event.destroy();
   return res.json(id);
 }));
+
+
 
 module.exports = router;

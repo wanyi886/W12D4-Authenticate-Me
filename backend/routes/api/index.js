@@ -2,15 +2,17 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 const { setTokenCookie } = require('../../utils/auth');
 const { restoreUser, requireAuth } = require( '../../utils/auth');
-const { User, Event } = require('../../db/models')
+const { User, Event, Category } = require('../../db/models')
 
 const sessionRouter = require('./session');
 const usersRouter = require('./users');
-const eventRouter = require('./event')
+const eventRouter = require('./event');
+const categoryRouter = require('./category')
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/event', eventRouter);
+router.use('/category', categoryRouter);
 
 router.post('/test', function(req, res) {
   res.json({ requestBody: req.body });
@@ -39,10 +41,11 @@ router.get('/require-auth', requireAuth, asyncHandler(async(req, res) => {
 
 router.get('/', asyncHandler(async(req, res) => {
   const events = await Event.findAll({
+    include: Category,
     order: [['id', 'DESC']]
   });
 
-  console.log(events);
+
   return res.json(events);
 }))
 

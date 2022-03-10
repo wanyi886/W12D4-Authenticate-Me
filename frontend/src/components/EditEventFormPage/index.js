@@ -4,15 +4,15 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory} from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import { getEventCategories, editEvent, getOneEvent } from '../../store/event';
-
+import { editEvent, getOneEvent } from '../../store/event';
+import { getEventCategories } from '../../store/category';
 
 
 const EditEventFormPage = ({event, hideForm}) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const eventCategories = useSelector(state => state.event.categories);
+  const eventCategories = useSelector(state => state.categories);
   console.log("eventCategories", eventCategories)
   const eventCategory = eventCategories.find(category => category.id === event.categoryId);
   console.log("event.Category", eventCategory)
