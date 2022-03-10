@@ -51,7 +51,8 @@ const EventDetail = () => {
           <div className="content subtitle">Location</div>
           <div className="content address">{event?.address}</div>
           <div className="content city-state-zip">{event?.city}, {event?.state} {event?.zipCode}</div>
-          <div>
+          <div className="content subtitle login-reminder">
+            Please log in to register this event.
           </div>
         </div>
     </div>
