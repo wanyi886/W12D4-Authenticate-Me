@@ -14,14 +14,16 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <NavLink to="/add-event" >Create an Event</NavLink>
-        <ProfileButton  user={sessionUser} />
+          <ProfileButton  user={sessionUser} />
+
+
       </>
 
     );
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
+        <NavLink to="/login" >Log In</NavLink>
         <NavLink to="/signup">Sign Up</NavLink>
       </>
     );
@@ -30,12 +32,12 @@ function Navigation({ isLoaded }){
   return (
     <div className='nav-container'>
       <div className='navbar'>
-        <div className='navbar-header'>
+        <div className='navbar-logo'>
             <NavLink exact to="/">
               <img src={logo} alt="Logo"></img>
             </NavLink>
         </div>
-        <div>
+        <div className='navbar-right'>
           {isLoaded && sessionLinks}
         </div>
       </div>
