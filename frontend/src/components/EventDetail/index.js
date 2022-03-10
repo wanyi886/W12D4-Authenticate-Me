@@ -12,7 +12,10 @@ const EventDetail = () => {
 
   const event = useSelector(state => state.event[id]);
   const sessionUser = useSelector(state => state.session.user);
+
+
   const ownEvent = sessionUser.id === event?.hostId;
+
 
   const [ showEditForm, setShowEditForm ] = useState(false);
 
