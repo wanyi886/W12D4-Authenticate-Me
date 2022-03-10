@@ -105,7 +105,7 @@ const eventReducer = (state = initialState, action) => {
       // const eventList = newState.list.map(event => newState[event.id]);
       // eventList.push(action.event);
       // newState.list = eventList
-      // return newState;
+      return newState;
     case DELETE:
       const events = {...state};
       delete events[action.id]; // TODO: Can delete successfully, but will show error message: Cannot read properties of undefined (reading 'id')

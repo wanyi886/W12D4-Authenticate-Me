@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory} from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import { postEvent } from '../../store/event';
+import { postEvent, getOneEvent } from '../../store/event';
 import { getEventCategories } from '../../store/category';
 
 
@@ -83,6 +83,7 @@ const AddEventFormPage = () => {
     let createdEvent = await dispatch(postEvent(payload));
 
     if (createdEvent) {
+      dispatch(getOneEvent(createdEvent.id))
       history.push(`/event/${createdEvent.id}`)
     }
   }
