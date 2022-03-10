@@ -10,17 +10,24 @@ const router = express.Router();
 
 // get tickets for a user
 router.get('/users/:id', asyncHandler(async function(req, res) {
-  const id = req.params.id
+  const id = req.params.id;
   const tickets = await Ticket.findAll(
     {
       where: { userId: id },
-      include: { model: Event }
+      include: { model: Event },
+      order: [["id", 'DESC']]
     }
     );
 
-    console.log("tickets from router", tickets)
-
   return res.json(tickets);
+}))
+
+router.post('/event/:id', asyncHandler(async function(res, res) {
+  const id = req.params.id;
+  const { userId, eventId } = req.body;
+  const newTicket = await Ticket.create({ userId, eventId });
+
+  return res.redirect(`${req.baseUrl}/users/${userId}`)
 }))
 
 module.exports = router;
