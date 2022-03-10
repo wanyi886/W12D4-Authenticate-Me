@@ -1,6 +1,6 @@
 // frontend/src/components/Navigation/index.js
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
@@ -28,13 +28,18 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-          {/* <img src={logo} alt="Logo"></img> */}
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <div className='nav-container'>
+      <div className='navbar'>
+        <div className='navbar-header'>
+            <NavLink exact to="/">
+              <img src={logo} alt="Logo"></img>
+            </NavLink>
+        </div>
+        <div>
+          {isLoaded && sessionLinks}
+        </div>
+      </div>
+    </div>
   );
 }
 

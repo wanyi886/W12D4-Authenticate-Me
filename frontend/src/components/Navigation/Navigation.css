@@ -1,4 +1,9 @@
 .navbar {
   border: 2px red solid;
+}
 
+.navbar img {
+  width: 10%;
+  object-fit: cover;
+  border: blue 1px solid;
 }
