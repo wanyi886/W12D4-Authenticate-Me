@@ -40,6 +40,7 @@ const EventDetail = () => {
       userId: sessionUser.id
     }
     dispatch(postTicket(payload));
+    history.push(`/tickets/users/${sessionUser.id}`)
   }
 
   let content = null;
