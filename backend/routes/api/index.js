@@ -7,12 +7,14 @@ const { User, Event, Category } = require('../../db/models')
 const sessionRouter = require('./session');
 const usersRouter = require('./users');
 const eventRouter = require('./event');
-const categoryRouter = require('./category')
+const categoryRouter = require('./category');
+const ticketsRouter = require('./tickets')
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/event', eventRouter);
 router.use('/categories', categoryRouter);
+router.use('/tickets', ticketsRouter);
 
 router.post('/test', function(req, res) {
   res.json({ requestBody: req.body });

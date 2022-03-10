@@ -1,7 +1,25 @@
-.event-detail-container {
+.detail-container {
+  display: flex;
+  width: 1050px;
   width: 900px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   border: red solid 1px
 }
 
-h2 {
+
+.detail-header img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
 }
+
+.detail-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+
+}
+
