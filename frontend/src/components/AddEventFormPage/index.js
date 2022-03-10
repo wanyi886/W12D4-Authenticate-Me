@@ -268,6 +268,7 @@ const AddEventFormPage = () => {
           </input>
         </div>
         <button
+          className='btn submit'
           type="submit"
           // disabled={errors? true : false}
           >Submit</button>

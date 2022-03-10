@@ -110,11 +110,12 @@ const EditEventFormPage = ({event, hideForm}) => {
       <ul>
           {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <div>
+        <div className='form-label'>
           <label htmlFor='title'>Title</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="text"
             name="title"
             placeholder="Give a name for the event"
@@ -123,7 +124,7 @@ const EditEventFormPage = ({event, hideForm}) => {
           </input>
         </div>
 
-        <div>
+        <div className='form-label'>
           <label htmlFor='description'>Description</label>
         </div>
         <div>
@@ -136,7 +137,7 @@ const EditEventFormPage = ({event, hideForm}) => {
           </textarea>
         </div>
 
-        <div>
+        <div className='form-label'>
           <label htmlFor='category'>Select a Category</label>
         </div>
           <select
@@ -150,11 +151,12 @@ const EditEventFormPage = ({event, hideForm}) => {
           </select>
 
 
-        <div>
+        <div className='form-label'>
           <label htmlFor='imgUrl'>The image URL of the event</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="text"
             name="imgUrl"
             placeholder='Ex: http://123456'
@@ -164,11 +166,12 @@ const EditEventFormPage = ({event, hideForm}) => {
           </input>
         </div>
 
-        <div>
+        <div className='form-label'>
           <label htmlFor='price'>Set the Price of Your Event</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="number"
             name="price"
             value={price}
@@ -177,11 +180,12 @@ const EditEventFormPage = ({event, hideForm}) => {
           </input>
         </div>
 
-        <div>
+        <div className='form-label'>
           <label htmlFor="date">Event Date</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="date"
             name="date"
             value={date}
@@ -190,11 +194,12 @@ const EditEventFormPage = ({event, hideForm}) => {
           </input>
         </div>
 
-        <div>
+        <div className='form-label'>
           <label htmlFor='startTime'>Event Start Time</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="time"
             name="startTime"
             value={startTime}
@@ -203,11 +208,12 @@ const EditEventFormPage = ({event, hideForm}) => {
           </input>
         </div>
 
-        <div>
-        <label htmlFor='endTime'>Event End Time</label>
+        <div className='form-label'>
+          <label htmlFor='endTime'>Event End Time</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="time"
             name="endTime"
             value={endTime}
@@ -216,11 +222,12 @@ const EditEventFormPage = ({event, hideForm}) => {
           </input>
         </div>
 
-        <div>
-        <label htmlFor='address'>Address</label>
+        <div className='form-label'>
+          <label htmlFor='address'>Address</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="text"
             name="address"
             value={address}
@@ -229,11 +236,12 @@ const EditEventFormPage = ({event, hideForm}) => {
           </input>
         </div>
 
-        <div>
-        <label htmlFor='city'>City</label>
+        <div className='form-label'>
+          <label htmlFor='city'>City</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="text"
             name="city"
             placeholder='Ex. San Francisco'
@@ -243,11 +251,12 @@ const EditEventFormPage = ({event, hideForm}) => {
           </input>
         </div>
 
-        <div>
-        <label htmlFor='state'>State</label>
+        <div className='form-label'>
+          <label htmlFor='state'>State</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="text"
             name="city"
             placeholder='Ex: CA'
@@ -257,11 +266,12 @@ const EditEventFormPage = ({event, hideForm}) => {
           </input>
         </div>
 
-        <div>
-        <label htmlFor='zipCode'>Zipcode</label>
+        <div className='form-label'>
+          <label htmlFor='zipCode'>Zipcode</label>
         </div>
         <div>
           <input
+            className='form-input'
             type="text"
             name="zipCode"
             placeholder='Ex: 91230'
@@ -270,11 +280,14 @@ const EditEventFormPage = ({event, hideForm}) => {
             >
           </input>
         </div>
-        <button
-          type="submit"
-          // disabled={errors? true : false}
-          >Submit</button>
-        <button type="button" onClick={handleCancelClick}>Cancel</button>
+
+          <button
+            className='btn submit'
+            type="submit"
+            // disabled={errors? true : false}
+            >Submit</button>
+
+        <button className='btn submit' type="button" onClick={handleCancelClick}>Cancel</button>
       </form>
     </div>
   )

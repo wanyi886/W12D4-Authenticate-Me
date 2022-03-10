@@ -43,20 +43,20 @@ const EventDetail = () => {
           <img src={event?.imgUrl} />
         </div>
         <div className="detail-body">
-          <div>About this event</div>
-          <div>{event && event.description}</div>
-          <div>Date and Time</div>
-          <div>{event?.date}</div>
-          <div>{`${event?.startTime} - ${event?.endTime}`}</div>
-          <div>$ {event?.price} </div>
-          <div>Location</div>
-          <div>{event?.address}</div>
-          <div>{event?.city}, {event?.state} {event?.zipCode}</div>
-          <div>{event?.hostId}</div>
+          <div className="content subtitle">About this event</div>
+          <div className="content des">{event && event.description}</div>
+          <div className="content subtitle">Date and Time</div>
+          <div className="content date">{event?.date}</div>
+          <div className="content time">{`${event?.startTime} - ${event?.endTime}`}</div>
+          <div className="content price">$ {event?.price} </div>
+          <div className="content subtitle">Location</div>
+          <div className="content address">{event?.address}</div>
+          <div className="content city-state-zip">{event?.city}, {event?.state} {event?.zipCode}</div>
+          {/* <div>{event?.hostId}</div> */}
           <div>
             {/* <button type="button">Register</button> */}
-            {event && ownEvent ? <button type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button type="button">Register</button>}
-            {event && ownEvent ? <button type="button" onClick={handleDeleteClick}>Delete</button> : null}
+            {event && ownEvent ? <button className='btn edit' type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button className='btn register' type="button">Register</button>}
+            {event && ownEvent ? <button className='btn delete' type="button" onClick={handleDeleteClick}>Delete</button> : null}
           </div>
         </div>
     </div>
