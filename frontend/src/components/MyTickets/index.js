@@ -34,14 +34,12 @@ const MyTickets = () => {
           {tickets.map((ticket) => {
             return (
               <div className="ticket-body" key={ticket.id}>
-                <div className="ticket-id">#{ticket.id}</div>
-                <div>{ticket.Event.title}</div>
-                <div>{new Date(ticket.Event.date).toDateString()}</div>
-                
+                <div className="id">#{ticket.id}</div>
+                <div className="title">{ticket.Event.title}</div>
+                <div className="date">{new Date(ticket.Event.date).toDateString()}</div>
               </div>
             )
           })}
-
       </>
     )
 
