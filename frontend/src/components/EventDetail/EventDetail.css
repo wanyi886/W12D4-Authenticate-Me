@@ -30,3 +30,8 @@
 .subtitle {
   font-size: 20px;
 }
+
+.login-reminder {
+  color: rgba(255, 166, 0, 0.808);
+  font-weight: 900;
+}

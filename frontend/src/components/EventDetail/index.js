@@ -14,7 +14,7 @@ const EventDetail = () => {
   const sessionUser = useSelector(state => state.session.user);
 
 
-  const ownEvent = sessionUser.id === event?.hostId;
+
 
 
   const [ showEditForm, setShowEditForm ] = useState(false);
@@ -34,12 +34,8 @@ const EventDetail = () => {
 
   let content = null;
 
-  if (event && showEditForm) {
-    content = (
-      <EditEventFormPage event={event} hideForm={() => setShowEditForm(false)}/>
-    )
-  } else {
-    content = (
+  if (!sessionUser) {
+    content = content = (
       <div className="detail-container">
         <h1>{event?.title}</h1>
         <div  className="detail-header">
@@ -55,15 +51,49 @@ const EventDetail = () => {
           <div className="content subtitle">Location</div>
           <div className="content address">{event?.address}</div>
           <div className="content city-state-zip">{event?.city}, {event?.state} {event?.zipCode}</div>
-          {/* <div>{event?.hostId}</div> */}
-          <div>
-            {/* <button type="button">Register</button> */}
-            {event && ownEvent ? <button className='btn edit' type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button className='btn register' type="button">Register</button>}
-            {event && ownEvent ? <button className='btn delete' type="button" onClick={handleDeleteClick}>Delete</button> : null}
+          <div className="content subtitle login-reminder">
+            Please log in to register this event.
           </div>
         </div>
     </div>
     )
+  } else {
+
+    if (event && showEditForm) {
+      content = (
+        <EditEventFormPage event={event} hideForm={() => setShowEditForm(false)}/>
+      )
+    } else {
+      const ownEvent = sessionUser.id === event?.hostId;
+      content = (
+        <div className="detail-container">
+          <h1>{event?.title}</h1>
+          <div  className="detail-header">
+            <img src={event?.imgUrl} />
+          </div>
+          <div className="detail-body">
+            <div className="content subtitle">About this event</div>
+            <div className="content des">{event && event.description}</div>
+            <div className="content subtitle">Date and Time</div>
+            <div className="content date">{event?.date}</div>
+            <div className="content time">{`${event?.startTime} - ${event?.endTime}`}</div>
+            <div className="content price">$ {event?.price} </div>
+            <div className="content subtitle">Location</div>
+            <div className="content address">{event?.address}</div>
+            <div className="content city-state-zip">{event?.city}, {event?.state} {event?.zipCode}</div>
+            {/* <div>{event?.hostId}</div> */}
+            <div>
+              {/* <button type="button">Register</button> */}
+              {event && ownEvent ? <button className='btn edit' type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button className='btn register' type="button">Register</button>}
+              {event && ownEvent ? <button className='btn delete' type="button" onClick={handleDeleteClick}>Delete</button> : null}
+            </div>
+          </div>
+      </div>
+      )
+
+  }
+
+
   }
 
   return (
