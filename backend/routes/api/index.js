@@ -12,7 +12,7 @@ const categoryRouter = require('./category')
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/event', eventRouter);
-router.use('/category', categoryRouter);
+router.use('/categories', categoryRouter);
 
 router.post('/test', function(req, res) {
   res.json({ requestBody: req.body });
@@ -41,7 +41,6 @@ router.get('/require-auth', requireAuth, asyncHandler(async(req, res) => {
 
 router.get('/', asyncHandler(async(req, res) => {
   const events = await Event.findAll({
-    include: Category,
     order: [['id', 'DESC']]
   });
 

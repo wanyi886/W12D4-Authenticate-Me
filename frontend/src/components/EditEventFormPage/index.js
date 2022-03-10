@@ -12,7 +12,7 @@ const EditEventFormPage = ({event, hideForm}) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const eventCategories = useSelector(state => state.categories);
+  const eventCategories = useSelector(state => state.category.list);
   console.log("eventCategories", eventCategories)
   const eventCategory = eventCategories.find(category => category.id === event.categoryId);
   console.log("event.Category", eventCategory)

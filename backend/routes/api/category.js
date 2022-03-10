@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { Category, Event } = require('../../db/models');
+const { Category } = require('../../db/models/');
 
 
 const router = express.Router();
@@ -9,10 +9,10 @@ const router = express.Router();
 
 
 // get event types
-router.get('/categories', asyncHandler(async function(req, res) {
-  console.log("lalalalalala")
-  const categories = await Category.findAll();
-  console.log("categories!!!", categories)
+router.get('/', asyncHandler(async function(req, res) {
+
+  const categories = await Category.findAll({});
+
   return res.json(categories);
 }))
 

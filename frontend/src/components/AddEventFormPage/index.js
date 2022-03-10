@@ -12,7 +12,7 @@ const AddEventFormPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const eventCategories = useSelector(state => state.categories);
+  const eventCategories = useSelector(state => state.category.list);
   const sessionUser = useSelector(state => state.session.user);
 
   const [title, setTitle] = useState('');

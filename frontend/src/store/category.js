@@ -6,11 +6,8 @@ const loadCategories = categories => ({
 })
 
 export const getEventCategories = () => async dispatch => {
-  console.log("hi from geteventCate action creator")
 
   const response = await fetch('/api/categories');
-
-  console.log("LOLOLOLO from geteventCate action creator")
 
   if (response.ok) {
     const categories = await response.json();
@@ -30,7 +27,7 @@ const categoryReducer = (state = initialState, action) => {
       // })
       return {
         ...state,
-        categories: action.categories
+        list: action.categories
       }
 
     default:
