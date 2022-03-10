@@ -11,6 +11,7 @@ import EventsBrowser from "./components/EventsBrowser";
 import EventDetail from "./components/EventDetail";
 import EditEventFormPage from "./components/EditEventFormPage";
 import splashImg from '../src/images/homepage2.jpg'
+import MyTickets from "./components/MyTickets";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,9 +23,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <div className="splash">
-        <img src={splashImg} alt={"splash"}/>
-      </div>
+    
       {isLoaded && (
         <Switch>
           <Route exact path="/">
@@ -44,6 +43,9 @@ function App() {
           </Route>
           <Route path="/event/:id/edit">
             <EditEventFormPage />
+          </Route>
+          <Route path="/my-tickets">
+            <MyTickets />
           </Route>
 
         </Switch>

@@ -4,6 +4,7 @@ import { Link, NavLink, Route, useParams } from 'react-router-dom';
 import { getAllEvents } from "../../store/event";
 import { getEventCategories } from "../../store/category";
 import './EventsBrowser.css'
+import splashImg from '../../images/homepage2.jpg'
 
 const EventsBrowser = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,11 @@ const EventsBrowser = () => {
   if(!eventArray) return null;
 
   return (
+    <>
+
+    <div className="splash">
+      <img src={splashImg} alt={"splash"}/>
+    </div>
     <div className="card-container">
       {/* <h2>Hi from Event Browser</h2> */}
       {eventArray.map((event) => {
@@ -40,6 +46,7 @@ const EventsBrowser = () => {
         )
       })}
     </div>
+    </>
   )
 }
 
