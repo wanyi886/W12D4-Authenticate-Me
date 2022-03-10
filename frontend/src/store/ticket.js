@@ -5,12 +5,12 @@ const loadTickets = tickets => ({
   tickets
 })
 
-export const getTickets = (id) => async dispatch => {
-  const response = await fetch(`/api/tickets/users/${id}`);
+export const getTickets = (userId) => async dispatch => {
+  const response = await fetch(`/api/tickets/users/${userId}`);
 
   if (response.ok) {
     const tickets = await response.json()
-    dispatch(loadTickets);
+    dispatch(loadTickets());
     return tickets;
   }
 }

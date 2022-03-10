@@ -17,6 +17,8 @@ router.get('/users/:id', asyncHandler(async function(req, res) {
     }
     );
 
+    console.log("tickets from router", tickets)
+
   return res.json(tickets);
 }))
 
