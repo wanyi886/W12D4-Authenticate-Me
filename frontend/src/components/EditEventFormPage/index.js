@@ -1,38 +1,45 @@
-import './AddEventFormPage.css';
+import './EditEventFormPage.css';
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory} from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import { postEvent, getOneEvent } from '../../store/event';
+import { editEvent, getOneEvent } from '../../store/event';
 import { getEventCategories } from '../../store/category';
 
 
-const AddEventFormPage = () => {
+const EditEventFormPage = ({event, hideForm}) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
   const eventCategories = useSelector(state => state.category.list);
+  console.log("eventCategories", eventCategories)
+  const eventCategory = eventCategories.find(category => category.id === event.categoryId);
+  console.log("event.Category", eventCategory)
+
   const sessionUser = useSelector(state => state.session.user);
 
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [category, setCategory] = useState(eventCategories[0]); // Need to check, since it's a dropdown
-  const [categoryId, setCategoryId ] = useState(1);
-  const [imgUrl, setImgUrl] = useState('');
-  const [price, setPrice] = useState(0);
-  const [date, setDate] = useState('');
-  const [startTime, setStartTime] = useState('');
-  const [endTime, setEndTime] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('')
-  const [zipCode, setZipCode] = useState('');
+
+
+  const [title, setTitle] = useState(event.title);
+  const [description, setDescription] = useState(event.description);
+  const [categoryId, setCategoryId ] = useState(event.categoryId);
+
+  const [category, setCategory] = useState(eventCategory.type); // Need to check, since it's a dropdown
+  const [imgUrl, setImgUrl] = useState(event.imgUrl);
+  const [price, setPrice] = useState(event.price);
+  const [date, setDate] = useState(event.date.slice(0,10));
+  const [startTime, setStartTime] = useState(event.startTime);
+  const [endTime, setEndTime] = useState(event.endTime);
+  const [address, setAddress] = useState(event.address);
+  const [city, setCity] = useState(event.city);
+  const [state, setState] = useState(event.state)
+  const [zipCode, setZipCode] = useState(event.zipCode);
   const [errors, setErrors] = useState([]);
 
 
   useEffect(() => {
-    dispatch(getEventCategories())
+    dispatch(getEventCategories());
   }, [dispatch])
 
   useEffect(() => {
@@ -65,7 +72,8 @@ const AddEventFormPage = () => {
     e.preventDefault();
 
     const payload = {
-      hostId: sessionUser.id,
+      ...event,
+      hostId: event.hostId,
       title,
       description,
       categoryId,
@@ -80,17 +88,24 @@ const AddEventFormPage = () => {
       zipCode
     }
 
-    let createdEvent = await dispatch(postEvent(payload));
+    console.log("event in edit form", event)
 
-    if (createdEvent) {
-      dispatch(getOneEvent(createdEvent.id))
-      history.push(`/event/${createdEvent.id}`)
+    let updatedEvent = await dispatch(editEvent(payload));
+
+    if (updatedEvent) {
+      hideForm();
     }
+  }
+
+  // TODO: not working yet, maybe define two content too?
+  const handleCancelClick = (e) => {
+    e.preventDefault();
+    hideForm()
   }
 
   return (
     <div className='form-container'>
-      <h1>Create an Event</h1>
+      <h1>Edit this Event</h1>
       <form onSubmit={handleSubmit}>
       <ul>
           {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -259,6 +274,7 @@ const AddEventFormPage = () => {
           type="submit"
           // disabled={errors? true : false}
           >Submit</button>
+        <button type="button" onClick={handleCancelClick}>Cancel</button>
       </form>
     </div>
   )
@@ -267,4 +283,4 @@ const AddEventFormPage = () => {
 
 
 
-export default AddEventFormPage;
+export default EditEventFormPage;

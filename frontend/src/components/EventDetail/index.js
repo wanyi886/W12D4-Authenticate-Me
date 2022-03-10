@@ -1,26 +1,43 @@
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from "react";
-import { getAllEvents, getOneEvent } from "../../store/event";
+import { useEffect, useState } from "react";
+import { deleteEvent, getAllEvents, getOneEvent } from "../../store/event";
 import './EventDetail.css'
+import EditEventFormPage from "../EditEventFormPage";
 
 const EventDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const history = useHistory();
 
   const event = useSelector(state => state.event[id]);
+  const sessionUser = useSelector(state => state.session.user);
+  const ownEvent = sessionUser.id === event?.hostId;
+
+  const [ showEditForm, setShowEditForm ] = useState(false);
 
   // const date = new Date(event?.date);
 
   useEffect(() => {
-
       // dispatch(getAllEvents());
       dispatch(getOneEvent(id));
+  }, [dispatch]);
 
-  }, [dispatch])
+  const handleDeleteClick = (e) => {
+    e.preventDefault();
+    dispatch(deleteEvent(id));
+    history.push('/')
+  }
 
-  return (
-    <div className="event-detail-container">
+  let content = null;
+
+  if (event && showEditForm) {
+    content = (
+      <EditEventFormPage event={event} hideForm={() => setShowEditForm(false)}/>
+    )
+  } else {
+    content = (
+      <div className="event-detail-container">
       <h2>{event?.title}</h2>
       <div  className="event-detail-img">
         <img src={event?.imgUrl} style={{width: "800px"}}/>
@@ -34,10 +51,22 @@ const EventDetail = () => {
       <div>Location</div>
       <div>{event?.address}</div>
       <div>{event?.city}, {event?.state} {event?.zipCode}</div>
-      <div></div>
-      <button type="button">Register</button>
+      <div>{event?.hostId}</div>
+      <div>
+        {/* <button type="button">Register</button> */}
+         {event && ownEvent ? <button type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button type="button">Register</button>}
+         {event && ownEvent ? <button type="button" onClick={handleDeleteClick}>Delete</button> : null}
+      </div>
+    </div>
+    )
+  }
+
+  return (
+    <div >
+     {content}
     </div>
   )
+
 }
 
 export default EventDetail;

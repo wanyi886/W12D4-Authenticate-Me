@@ -1,32 +1,41 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { NavLink, Route, useParams } from 'react-router-dom';
+import { Link, NavLink, Route, useParams } from 'react-router-dom';
 import { getAllEvents } from "../../store/event";
+import { getEventCategories } from "../../store/category";
 
 const EventsBrowser = () => {
   const dispatch = useDispatch();
-  const events = useSelector(state => state.event.list);
+  const events = useSelector(state => state.event);
+  const eventArray = Object.values(events)
   useEffect(() => {
-    dispatch(getAllEvents())
+    dispatch(getEventCategories())
+    dispatch(getAllEvents());
   }, [dispatch]);
 
-  if(!events) return null;
+  if(!eventArray) return null;
 
   return (
-    <div>
+    <div className="card-container">
       <h2>Hi from Event Browser</h2>
-      {events.map((event) => {
+      {eventArray.map((event) => {
         return (
-
-            <div className="event-card" key={event.id}>
-                <img src={`${event.imgUrl}`} style={{width: "200px"}}/>
-              <ul>
-                <li>{event.title}</li>
-                <li>{event.date}</li>
-                <li>{event.startTime} - {event.endTime}</li>
-                <li>$ {event.price}</li>
-              </ul>
-            </div>
+          <div className="card" key={event?.id} style={{width: "300px"}}>
+            <Link to={`/event/${event.id}`} >
+                <div className="card-header" >
+                    <img src={`${event?.imgUrl}`} style={{width: "200px"}}/>
+                </div>
+                <div className="card-body">
+                  <span className="cate tag-teal">Category</span>
+                  <h3>{event?.title}</h3>
+                  <div>Id: {event?.id}</div>
+                  <div>Category: {event?.categoryId}</div>
+                  <div>{event?.date}</div>
+                  <div>{event?.startTime} - {event?.endTime}</div>
+                  <div>$ {event?.price}</div>
+                </div>
+            </Link>
+          </div>
         )
       })}
     </div>

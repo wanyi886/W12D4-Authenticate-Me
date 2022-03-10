@@ -8,11 +8,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-// get event types
-router.get('/categories', asyncHandler(async function(req, res) {
-  const categories = await Category.findAll({});
-  return res.json(categories);
-}))
+
 
 
 const validateCreatingEvent = [
@@ -68,10 +64,27 @@ router.get('/:id', asyncHandler(async (req, res) => {
 }));
 
 // update one event
-router.get('/:id', validateCreatingEvent, asyncHandler(async(req, res) => {
-  const id = await Event.update(req.body);
+router.put('/:id', validateCreatingEvent, asyncHandler(async(req, res) => {
+  const id = req.params.id;
   const event = await Event.findByPk(id);
+
+  const { ...updatedEvent } = req.body
+
+  await event.update(updatedEvent)
+
   return res.json(event);
 }))
+
+router.delete('/:id', asyncHandler(async function (req, res) {
+  const id = req.params.id;
+  const event = await Event.findByPk(id);
+
+  if(!event) throw new Error('Cannot find item');
+
+  await event.destroy();
+  return res.json(id);
+}));
+
+
 
 module.exports = router;

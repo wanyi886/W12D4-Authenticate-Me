@@ -1,23 +1,26 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD = 'event/LOAD'
-const LOAD_CATEGORIES = 'event/LOAD_CATEGORIES';
+
 const ADD_ONE = 'event/ADD_ONE';
+const DELETE = 'event/DELETE'
 
 const load = list => ({
   type: LOAD,
   list
 })
 
-const loadCategories = categories => ({
-  type: LOAD_CATEGORIES,
-  categories
-})
+
 
 const addOneEvent = event => ({
   type: ADD_ONE,
   event
 });
+
+const remove = id => ({
+  type: DELETE,
+  id
+})
 
 export const getAllEvents = () => async dispatch => {
   const response = await fetch('/api');
@@ -35,14 +38,7 @@ export const getOneEvent = (id) => async dispatch => {
   }
 }
 
-export const getEventCategories = () => async dispatch => {
-  const response = await fetch('/api/event/categories');
 
-  if (response.ok) {
-    const categories = await response.json();
-    dispatch(loadCategories(categories));
-  }
-}
 
 export const postEvent = (data) => async dispatch => {
   const response = await csrfFetch('/api/event', {
@@ -58,8 +54,10 @@ export const postEvent = (data) => async dispatch => {
   }
 }
 
+
+
 export const editEvent = (data) => async dispatch => {
-  const response = await csrfFetch(`api/event/${data.id}`, {
+  const response = await csrfFetch(`/api/event/${data.id}`, {
     method: "PUT",
     headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify(data)
@@ -72,12 +70,25 @@ export const editEvent = (data) => async dispatch => {
   }
 }
 
+export const deleteEvent = (id) => async dispatch => {
+  const response = await csrfFetch(`/api/event/${id}`, {
+    method: "DELETE",
+  })
+
+  if (response.ok) {
+    const event = await response.json();
+    dispatch(remove(id));
+  }
+}
+
 const initialState = {
-  list: [],
-  categories: [],
+  // list: [],
+  // categories: [],
 }
 
 const eventReducer = (state = initialState, action) => {
+  let newState;
+
   switch (action.type) {
     case LOAD:
       const allEvents = {}
@@ -87,19 +98,25 @@ const eventReducer = (state = initialState, action) => {
       return {
         ...allEvents,
         ...state,
-        list: action.list
-      }
-    case LOAD_CATEGORIES:
-      return {
-        ...state,
-        categories: action.categories
+        // list: action.list
       }
     case ADD_ONE:
-      const newState = {...state, [action.event.id]: action.event};
-      const eventList = newState.list.map(event => newState[event.id]);
-      eventList.push(action.event);
-      newState.list = eventList
+      newState = {...state, [action.event.id]: action.event};
+      // const eventList = newState.list.map(event => newState[event.id]);
+      // eventList.push(action.event);
+      // newState.list = eventList
       return newState;
+    case DELETE:
+      const events = {...state};
+      delete events[action.id]; // TODO: Can delete successfully, but will show error message: Cannot read properties of undefined (reading 'id')
+      // return everything as an array except the one we deleted
+      // const filteredEvent = events.list.filter(event => (
+      //   event.id !== action.id
+      // ));
+      //   console.log("filteredEvent", filteredEvent)
+
+      // events.list = [...filteredEvent];
+      return events;
     default:
       return state;
   }

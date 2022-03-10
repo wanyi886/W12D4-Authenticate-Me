@@ -9,6 +9,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import EventsBrowser from "./components/EventsBrowser";
 import EventDetail from "./components/EventDetail";
+import EditEventFormPage from "./components/EditEventFormPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/event/:id">
             <EventDetail />
+          </Route>
+          <Route path="/event/:id/edit">
+            <EditEventFormPage />
           </Route>
 
         </Switch>
