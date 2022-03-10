@@ -47,6 +47,9 @@ function App() {
           <Route path="/tickets/users/:id">
             <MyTickets />
           </Route>
+          <Route>
+            Page Not Found
+          </Route>
 
         </Switch>
       )}
