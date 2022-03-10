@@ -1,4 +1,14 @@
 .navbar {
   border: 2px red solid;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); */
+}
 
+.navbar-logo img {
+  width: 10%;
+  object-fit: cover;
+  border: blue 1px solid;
+}
+
+.navbar-right {
+  padding: 5px;
 }

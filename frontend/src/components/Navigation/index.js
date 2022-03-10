@@ -1,6 +1,6 @@
 // frontend/src/components/Navigation/index.js
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
@@ -12,29 +12,38 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <div >
+      <>
         <NavLink to="/add-event" >Create an Event</NavLink>
-        <ProfileButton  user={sessionUser} />
-      </div>
+        <NavLink to="/my-tickets">My Tickets</NavLink>
+        {/* <NavLink to="/my-events">My Events</NavLink> */}
+          <ProfileButton  user={sessionUser} />
+
+
+      </>
 
     );
   } else {
     sessionLinks = (
-      <nav className='navbar'>
-        <NavLink to="/login">Log In</NavLink>
+      <>
+        <NavLink to="/login" >Log In</NavLink>
         <NavLink to="/signup">Sign Up</NavLink>
-      </nav>
+      </>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-          {/* <img src={logo} alt="Logo"></img> */}
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <div className='nav-container'>
+      <div className='navbar'>
+        <div className='navbar-logo'>
+            <NavLink exact to="/">
+              <img src={logo} alt="Logo"></img>
+            </NavLink>
+        </div>
+        <div className='navbar-right'>
+          {isLoaded && sessionLinks}
+        </div>
+      </div>
+    </div>
   );
 }
 
