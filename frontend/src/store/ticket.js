@@ -48,7 +48,7 @@ const ticketReducer = (state = initialState, action) => {
         list: action.tickets,
       }
     case ADD_ONE:
-      const newState = {...state, [action.event.id]: action.event}
+      const newState = {...state, [action.ticket.id]: action.ticket}
       // const ticketList = newState.list.map(ticket => newState)
       return newState;
     default:
