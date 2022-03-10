@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { Ticket } = require('../../db/models/');
+const { Ticket, User, Event } = require('../../db/models/');
 
 
 const router = express.Router();
@@ -13,7 +13,8 @@ router.get('/users/:id', asyncHandler(async function(req, res) {
   const id = req.params.id
   const tickets = await Ticket.findAll(
     {
-      where: { userId: id }
+      where: { userId: id },
+      include: { model: Event }
     }
     );
 

@@ -10,7 +10,8 @@ export const getTickets = (userId) => async dispatch => {
 
   if (response.ok) {
     const tickets = await response.json()
-    dispatch(loadTickets());
+    dispatch(loadTickets(tickets));
+    console.log("tickets from action creator", tickets)
     return tickets;
   }
 }
@@ -22,7 +23,7 @@ const ticketReducer = (state = initialState, action) => {
     case LOAD_TICKETS:
       return {
         ...state,
-        list: action.tickets
+        list: action.tickets,
       }
     default:
       return state;
