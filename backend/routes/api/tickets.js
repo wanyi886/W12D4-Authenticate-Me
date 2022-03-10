@@ -13,7 +13,7 @@ router.get('/users/:id', asyncHandler(async function(req, res) {
   const id = req.params.id
   const tickets = await Ticket.findAll(
     {
-      // where:
+      where: { userId: id }
     }
     );
 
