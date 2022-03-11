@@ -39,19 +39,27 @@ function Navigation({ isLoaded }){
     );
   } else {
     sessionLinks = (
-      <div className="nav-container">
-        <NavLink exact to="/" className="nav-logo">
-          <img src={logo} alt="Logo"></img>
-        </NavLink>
+      <>
+      <div className="left-nav">
+        <div className="icon">
+          <NavLink exact to="/">
+            <img src={logo} alt="Logo" className='eventlight'></img>
+          </NavLink>
+        </div>
+      </div>
+
+      <div className='right-nav'>
         <ul className='nav-menu'>
           <li className='nav-item'>
-            <NavLink to="/login" >Log In</NavLink>
+          <NavLink to="/login" >Log In</NavLink>
           </li>
           <li className='nav-item'>
-            <NavLink to="/signup">Sign Up</NavLink>
+          <NavLink to="/signup">Sign Up</NavLink>
           </li>
         </ul>
       </div>
+
+      </>
     );
   }
 
