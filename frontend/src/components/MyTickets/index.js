@@ -11,8 +11,6 @@ const MyTickets = () => {
   const sessionUser = useSelector(state => state.session.user);
   const tickets = useSelector(state => state.ticket.list)
 
-  console.log(new Date().toDateString())
-
   useEffect(() => {
     dispatch(getTickets(sessionUser.id))
   }, [dispatch]);

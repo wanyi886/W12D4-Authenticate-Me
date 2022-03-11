@@ -13,9 +13,9 @@ const EditEventFormPage = ({event, hideForm}) => {
   const dispatch = useDispatch();
 
   const eventCategories = useSelector(state => state.category.list);
-  console.log("eventCategories", eventCategories)
+
   const eventCategory = eventCategories.find(category => category.id === event.categoryId);
-  console.log("event.Category", eventCategory)
+
 
   const sessionUser = useSelector(state => state.session.user);
 
@@ -88,7 +88,6 @@ const EditEventFormPage = ({event, hideForm}) => {
       zipCode
     }
 
-    console.log("event in edit form", event)
 
     let updatedEvent = await dispatch(editEvent(payload));
 
