@@ -1,10 +1,52 @@
-.navbar {
-  /* border: 2px red solid; */
-  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  margin: 0;
+  padding: 0
 }
 
-.navbar-logo img {
+.navbar {
+  display: flex;
+  /* border: 2px red solid; */
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); */
+  height: 80px;
+  justify-content: space-between;
+  box-shadow: 0 1px 5px gray;
+  z-index: 5;
+  font-weight: bolder;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  position: sticky;
+}
+
+.left-nav {
+  display: flex;
+  padding: 5px;
+  height: fit-content;
+  height: 100%;
+}
+
+.eventlight {
+  width: 25%;
+}
+
+.right-nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 13px;
+  padding: 5px;
+  margin-right: 25px;
+  list-style-type: none;
+}
+
+.nav-item {
+  margin: 15px;
+}
+
+.nav-logo {
   width: 10%;
+  align-items: center;
   object-fit: cover;
   /* border: blue 1px solid; */
 }

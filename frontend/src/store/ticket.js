@@ -39,7 +39,6 @@ export const getTickets = (userId) => async dispatch => {
   if (response.ok) {
     const tickets = await response.json()
     dispatch(loadTickets(tickets));
-    console.log("tickets from action creator", tickets)
     return tickets;
   }
 }
@@ -76,8 +75,7 @@ const ticketReducer = (state = initialState, action) => {
       const filteredTicket = tickets.list.filter(ticket => (
         ticket.id !== action.id
       ))
-      console.log("tickets", tickets)
-      console.log("filteredTicket", filteredTicket)
+     
       tickets.list = filteredTicket
       return tickets;
     default:
