@@ -9,11 +9,26 @@ import splashImg from '../../images/homepage2.jpg'
 const EventsBrowser = () => {
   const dispatch = useDispatch();
   const events = useSelector(state => state.event);
-  const eventArray = Object.values(events)
+  const eventArray = Object.values(events);
+
+  const sortList = array => {
+    return array
+      .sort((eventA, eventB) => {
+        return eventB.id - eventA.id;
+      })
+      .map(event => event.id);
+  }
+
+  const sortedArray = sortList(eventArray);
+  console.log("eventArray", eventArray);
+  console.log("sortedArray", sortList(eventArray))
+
   useEffect(() => {
     dispatch(getEventCategories())
     dispatch(getAllEvents());
   }, [dispatch]);
+
+
 
   if(!eventArray) return null;
 
@@ -33,12 +48,12 @@ const EventsBrowser = () => {
                     <img src={`${event?.imgUrl}`} />
                 </div>
                 <div className="card-body">
-                  <span className="cate tag-teal">{event?.Category?.type}</span>
+                  <span className="cate tag">{event?.Category?.type}</span>
                   <h3>{event?.title}</h3>
                   <div>Id: {event?.id}</div>
-                  <div>{new Date(event?.date).toDateString()}</div>
-                  <div>{event?.startTime} - {event?.endTime}</div>
-                  <div>$ {event?.price}</div>
+                  <div className="cate date">{new Date(event?.date).toDateString()}</div>
+                  <div className="cate time">{event?.startTime} - {event?.endTime}</div>
+                  <div className="cate price">$ {event?.price}</div>
                 </div>
             </Link>
           </div>
