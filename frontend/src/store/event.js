@@ -31,7 +31,7 @@ export const getAllEvents = () => async dispatch => {
 }
 
 export const getOneEvent = (id) => async dispatch => {
-  const response = await fetch(`/api/event/${id}`);
+  const response = await fetch(`/api/event/${id}/detail`);
   if (response.ok) {
     const event = await response.json();
     dispatch(addOneEvent(event));

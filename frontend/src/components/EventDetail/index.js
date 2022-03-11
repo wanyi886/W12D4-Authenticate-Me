@@ -15,12 +15,8 @@ const EventDetail = () => {
   const sessionUser = useSelector(state => state.session.user);
 
 
-
-
-
   const [ showEditForm, setShowEditForm ] = useState(false);
 
-  // const date = new Date(event?.date);
 
   useEffect(() => {
       // dispatch(getAllEvents());
@@ -43,7 +39,7 @@ const EventDetail = () => {
     history.push(`/tickets/users/${sessionUser.id}`)
   }
 
-  let content = null;
+  let content;
 
   if (!sessionUser) {
     content = content = (
@@ -92,9 +88,7 @@ const EventDetail = () => {
             <div className="content subtitle">Location</div>
             <div className="content address">{event?.address}</div>
             <div className="content city-state-zip">{event?.city}, {event?.state} {event?.zipCode}</div>
-            {/* <div>{event?.hostId}</div> */}
             <div>
-              {/* <button type="button">Register</button> */}
               {event && ownEvent ? <button className='btn edit' type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button className='btn register' type="button" onClick={handleRegisterClick}>Register</button>}
               {event && ownEvent ? <button className='btn delete' type="button" onClick={handleDeleteClick}>Delete</button> : null}
             </div>
@@ -103,7 +97,6 @@ const EventDetail = () => {
       )
 
   }
-
 
   }
 

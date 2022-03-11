@@ -58,13 +58,13 @@ router.post('/', validateCreatingEvent, asyncHandler(async(req, res) => {
 }))
 
 // get one event
-router.get('/:id', asyncHandler(async (req, res) => {
+router.get('/:id/detail', asyncHandler(async (req, res) => {
   const event = await Event.findByPk(req.params.id);
   return res.json(event);
 }));
 
 // update one event
-router.put('/:id', validateCreatingEvent, asyncHandler(async(req, res) => {
+router.put('/:id/detail', validateCreatingEvent, asyncHandler(async(req, res) => {
   const id = req.params.id;
   const event = await Event.findByPk(id);
 

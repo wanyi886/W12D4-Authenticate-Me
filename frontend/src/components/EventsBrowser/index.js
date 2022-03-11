@@ -42,7 +42,7 @@ const EventsBrowser = () => {
         {sortedArray.map((event) => {
           return (
             <div className="card" key={event?.id} >
-              <Link to={`/event/${event.id}`} style={{ textDecoration: 'none' }}>
+              <Link to={`/event/${event.id}/detail`} style={{ textDecoration: 'none' }}>
                   <div className="card-header" >
                       <img src={`${event?.imgUrl}`} />
                   </div>
