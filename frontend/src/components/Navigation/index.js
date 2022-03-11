@@ -13,36 +13,52 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-        <NavLink to="/add-event" >Create an Event</NavLink>
-        <NavLink to={`/tickets/users/${sessionUser.id}`}>My Tickets</NavLink>
-          <ProfileButton  user={sessionUser} />
+      <div className="left-nav">
+        <div className="icon">
+          <NavLink exact to="/">
+            <img src={logo} alt="Logo" className='eventlight'></img>
+          </NavLink>
+        </div>
+      </div>
 
+      <div className='right-nav'>
+        <ul className='nav-menu'>
+          <li className='nav-item'>
+            <NavLink to="/add-event" >Create an Event</NavLink>
+          </li>
+          <li className='nav-item'>
+            <NavLink to={`/tickets/users/${sessionUser.id}`}>My Tickets</NavLink>
+          </li>
+          <li className='nav-item'>
+            <ProfileButton  user={sessionUser} />
+          </li>
+        </ul>
+      </div>
 
       </>
-
     );
   } else {
     sessionLinks = (
-      <>
-        <NavLink to="/login" >Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-      </>
+      <div className="nav-container">
+        <NavLink exact to="/" className="nav-logo">
+          <img src={logo} alt="Logo"></img>
+        </NavLink>
+        <ul className='nav-menu'>
+          <li className='nav-item'>
+            <NavLink to="/login" >Log In</NavLink>
+          </li>
+          <li className='nav-item'>
+            <NavLink to="/signup">Sign Up</NavLink>
+          </li>
+        </ul>
+      </div>
     );
   }
 
   return (
-    <div className='nav-container'>
-      <div className='navbar'>
-        <div className='navbar-logo'>
-            <NavLink exact to="/">
-              <img src={logo} alt="Logo"></img>
-            </NavLink>
-        </div>
-        <div className='navbar-right'>
+    <header className='navbar'>
           {isLoaded && sessionLinks}
-        </div>
-      </div>
-    </div>
+    </header>
   );
 }
 
