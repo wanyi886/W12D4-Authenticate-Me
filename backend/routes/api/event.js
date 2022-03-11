@@ -79,7 +79,7 @@ router.delete('/:id', asyncHandler(async function (req, res) {
   const id = req.params.id;
   const event = await Event.findByPk(id);
 
-  if(!event) throw new Error('Cannot find item');
+  if(!event) throw new Error('Cannot find this event.');
 
   await event.destroy();
   return res.json(id);

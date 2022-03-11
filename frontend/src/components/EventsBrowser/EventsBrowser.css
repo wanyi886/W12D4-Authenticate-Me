@@ -47,6 +47,11 @@ body {
   min-height: 250px;
 }
 
+a {
+  text-decoration: none;
+  color: gray;
+}
+
 a:visited {
   text-decoration: none;
   color: gray;

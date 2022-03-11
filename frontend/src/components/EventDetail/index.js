@@ -2,6 +2,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
 import { deleteEvent, getAllEvents, getOneEvent } from "../../store/event";
+import { postTicket } from "../../store/ticket";
 import './EventDetail.css'
 import EditEventFormPage from "../EditEventFormPage";
 
@@ -30,6 +31,16 @@ const EventDetail = () => {
     e.preventDefault();
     dispatch(deleteEvent(id));
     history.push('/')
+  }
+
+  const handleRegisterClick = (e) => {
+    e.preventDefault();
+    const payload = {
+      eventId: event.id,
+      userId: sessionUser.id
+    }
+    dispatch(postTicket(payload));
+    history.push(`/tickets/users/${sessionUser.id}`)
   }
 
   let content = null;
@@ -84,7 +95,7 @@ const EventDetail = () => {
             {/* <div>{event?.hostId}</div> */}
             <div>
               {/* <button type="button">Register</button> */}
-              {event && ownEvent ? <button className='btn edit' type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button className='btn register' type="button">Register</button>}
+              {event && ownEvent ? <button className='btn edit' type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button className='btn register' type="button" onClick={handleRegisterClick}>Register</button>}
               {event && ownEvent ? <button className='btn delete' type="button" onClick={handleDeleteClick}>Delete</button> : null}
             </div>
           </div>
