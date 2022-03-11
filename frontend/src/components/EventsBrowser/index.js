@@ -33,11 +33,10 @@ const EventsBrowser = () => {
                     <img src={`${event?.imgUrl}`} />
                 </div>
                 <div className="card-body">
-                  <span className="cate tag-teal">Category</span>
+                  <span className="cate tag-teal">{event?.Category.type}</span>
                   <h3>{event?.title}</h3>
                   <div>Id: {event?.id}</div>
-                  <div>Category: {event?.categoryId}</div>
-                  <div>{event?.date}</div>
+                  <div>{new Date(event?.date).toDateString()}</div>
                   <div>{event?.startTime} - {event?.endTime}</div>
                   <div>$ {event?.price}</div>
                 </div>
