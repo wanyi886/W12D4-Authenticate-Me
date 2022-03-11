@@ -64,7 +64,7 @@ router.get('/:id/detail', asyncHandler(async (req, res) => {
 }));
 
 // update one event
-router.put('/:id/detail', validateCreatingEvent, asyncHandler(async(req, res) => {
+router.put('/:id', validateCreatingEvent, asyncHandler(async(req, res) => {
   const id = req.params.id;
   const event = await Event.findByPk(id);
 
