@@ -18,6 +18,7 @@ const MyTickets = () => {
   const handleCancelClick = (e, ticketId) => {
     e.preventDefault();
     dispatch(deleteTicket(ticketId));
+    dispatch(getTickets(sessionUser.id))
   }
 
   let content;
