@@ -42,17 +42,19 @@ const EventsBrowser = () => {
         {sortedArray.map((event) => {
           return (
             <div className="card" key={event?.id} >
-              <Link to={`/event/${event.id}`} style={{ textDecoration: 'none' }}>
+              <Link to={`/event/${event.id}/detail`} style={{ textDecoration: 'none' }}>
                   <div className="card-header" >
                       <img src={`${event?.imgUrl}`} />
                   </div>
                   <div className="card-body">
                     <span className="cate tag">{event?.Category?.type}</span>
+                    <div>Category{event.categoryId}</div>
                     <h3>{event?.title}</h3>
                     {/* <div>Id: {event?.id}</div> */}
                     <div className="cate date">{new Date(event?.date).toDateString()}</div>
                     <span className="cate time">{event?.startTime}</span>
                     <div className="cate price">$ {event?.price}</div>
+                    <div className="cate price">Event Id {event?.id}</div>
                   </div>
               </Link>
             </div>

@@ -54,11 +54,11 @@ const validateCreatingEvent = [
 router.post('/', validateCreatingEvent, asyncHandler(async(req, res) => {
   const newEvent = await Event.create(req.body);
 
-  return res.redirect(`${req.baseUrl}/${newEvent.id}`);
+  return res.redirect(`${req.baseUrl}/${newEvent.id}/detail`);
 }))
 
 // get one event
-router.get('/:id', asyncHandler(async (req, res) => {
+router.get('/:id/detail', asyncHandler(async (req, res) => {
   const event = await Event.findByPk(req.params.id);
   return res.json(event);
 }));

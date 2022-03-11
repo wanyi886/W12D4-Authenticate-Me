@@ -31,7 +31,7 @@ export const getAllEvents = () => async dispatch => {
 }
 
 export const getOneEvent = (id) => async dispatch => {
-  const response = await fetch(`/api/event/${id}`);
+  const response = await fetch(`/api/event/${id}/detail`);
   if (response.ok) {
     const event = await response.json();
     dispatch(addOneEvent(event));
@@ -41,7 +41,7 @@ export const getOneEvent = (id) => async dispatch => {
 
 
 export const postEvent = (data) => async dispatch => {
-  const response = await csrfFetch('/api/event', {
+  const response = await csrfFetch(`/api/event`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify(data),
@@ -105,6 +105,7 @@ const eventReducer = (state = initialState, action) => {
       // const eventList = newState.list.map(event => newState[event.id]);
       // eventList.push(action.event);
       // newState.list = eventList
+      console.log("newState in ADD_ONE", newState);
       return newState;
     case DELETE:
       const events = {...state};
