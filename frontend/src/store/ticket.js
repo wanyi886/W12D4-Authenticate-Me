@@ -38,6 +38,10 @@ export const getTickets = (userId) => async dispatch => {
   }
 }
 
+export const deleteTicket = (id) => async dispatch => {
+  const response = await fetch
+}
+
 const initialState = {}
 
 const ticketReducer = (state = initialState, action) => {

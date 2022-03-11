@@ -30,4 +30,14 @@ router.post('/event/:id', asyncHandler(async function(req, res) {
   return res.redirect(`${req.baseUrl}/users/${userId}`)
 }))
 
+router.delete('/:id', asyncHandler(async function(req, res) {
+  const id = req.params.id;
+  const ticket = await Ticket.findByPk(id);
+
+  if(!ticket) throw new Error('Cannot find this ticket.');
+
+  await ticket.destroy();
+  return res.json(id);
+}))
+
 module.exports = router;
