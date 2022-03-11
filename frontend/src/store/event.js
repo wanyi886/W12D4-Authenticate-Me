@@ -88,10 +88,10 @@ const initialState = {
 
 const eventReducer = (state = initialState, action) => {
   let newState;
-  const allEvents = {}
 
   switch (action.type) {
     case LOAD:
+      const allEvents = {}
       action.list.forEach(event => {
         allEvents[event.id] = event;
       })
@@ -101,7 +101,7 @@ const eventReducer = (state = initialState, action) => {
         // list: action.list
       }
     case ADD_ONE:
-      newState = {...allEvents,...state, [action.event.id]: action.event};
+      newState = {...state, [action.event.id]: action.event};
       // const eventList = newState.list.map(event => newState[event.id]);
       // eventList.push(action.event);
       // newState.list = eventList
