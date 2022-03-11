@@ -16,7 +16,7 @@ const EventsBrowser = () => {
       .sort((eventA, eventB) => {
         return eventB.id - eventA.id;
       })
-      .map(event => event.id);
+      // .map(event => event.id);
   }
 
   const sortedArray = sortList(eventArray);
@@ -40,7 +40,7 @@ const EventsBrowser = () => {
     </div>
     <div className="container">
       {/* <h2>Hi from Event Browser</h2> */}
-      {eventArray.map((event) => {
+      {sortedArray.map((event) => {
         return (
           <div className="card" key={event?.id} >
             <Link to={`/event/${event.id}`} style={{ textDecoration: 'none' }}>
@@ -50,9 +50,9 @@ const EventsBrowser = () => {
                 <div className="card-body">
                   <span className="cate tag">{event?.Category?.type}</span>
                   <h3>{event?.title}</h3>
-                  <div>Id: {event?.id}</div>
+                  {/* <div>Id: {event?.id}</div> */}
                   <div className="cate date">{new Date(event?.date).toDateString()}</div>
-                  <div className="cate time">{event?.startTime} - {event?.endTime}</div>
+                  <span className="cate time">{event?.startTime}</span>
                   <div className="cate price">$ {event?.price}</div>
                 </div>
             </Link>

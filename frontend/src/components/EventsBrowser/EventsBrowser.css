@@ -56,3 +56,26 @@ a:visited {
   text-decoration: none;
   color: gray;
 }
+
+.cate.date {
+  color: #f05537
+}
+
+.cate.time {
+  color: #f05537;
+  font-size: 20px;
+}
+
+.cate.price {
+  font-size: 15px;
+  padding-top: 10px;
+}
+
+.tag {
+  background: #ffa600;
+  border-radius: 30px;
+  font-size: 12px;
+  color: #fff;
+  padding: 2px 10px;
+  text-transform: uppercase;
+}
