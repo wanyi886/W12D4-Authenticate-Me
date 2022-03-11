@@ -3,8 +3,10 @@ import { useEffect } from "react";
 import { getTickets } from '../../store/ticket'
 import { Link } from "react-router-dom";
 import { deleteTicket } from "../../store/ticket";
+import { useHistory } from "react-router-dom";
 
 const MyTickets = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const tickets = useSelector(state => state.ticket.list)
@@ -19,6 +21,8 @@ const MyTickets = () => {
     e.preventDefault();
     dispatch(deleteTicket(ticketId));
     dispatch(getTickets(sessionUser.id))
+    // can we use history to redirect this page?
+    history.push(`/tickets/users/${sessionUser.id}`)
   }
 
   let content;

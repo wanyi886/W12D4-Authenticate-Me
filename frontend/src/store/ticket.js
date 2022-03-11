@@ -72,8 +72,14 @@ const ticketReducer = (state = initialState, action) => {
 
     case DELETE:
       const tickets = {...state};
-      delete tickets[action.id];
-
+      // delete tickets[action.id];
+      const filteredTicket = tickets.list.filter(ticket => (
+        ticket.id !== action.id
+      ))
+      console.log("tickets", tickets)
+      console.log("filteredTicket", filteredTicket)
+      tickets.list = filteredTicket
+      return tickets;
     default:
       return state;
   }
