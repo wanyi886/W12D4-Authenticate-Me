@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
-import logo from '../../images/eventLight.png'
+import logo from '../../images/eventLight2.png'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -15,7 +15,6 @@ function Navigation({ isLoaded }){
       <>
         <NavLink to="/add-event" >Create an Event</NavLink>
         <NavLink to={`/tickets/users/${sessionUser.id}`}>My Tickets</NavLink>
-        {/* <NavLink to="/my-events">My Events</NavLink> */}
           <ProfileButton  user={sessionUser} />
 
 

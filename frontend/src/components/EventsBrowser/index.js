@@ -33,34 +33,33 @@ const EventsBrowser = () => {
   if(!eventArray) return null;
 
   return (
-    <>
-
-    <div className="splash">
-      {/* <img src={splashImg} alt={"splash"}/> */}
+    <div className="homepage-body">
+      <div className="splash">
+        {/* <img src={splashImg} alt={"splash"}/> */}
+      </div>
+      <div className="container">
+        {/* <h2>Hi from Event Browser</h2> */}
+        {sortedArray.map((event) => {
+          return (
+            <div className="card" key={event?.id} >
+              <Link to={`/event/${event.id}`} style={{ textDecoration: 'none' }}>
+                  <div className="card-header" >
+                      <img src={`${event?.imgUrl}`} />
+                  </div>
+                  <div className="card-body">
+                    <span className="cate tag">{event?.Category?.type}</span>
+                    <h3>{event?.title}</h3>
+                    {/* <div>Id: {event?.id}</div> */}
+                    <div className="cate date">{new Date(event?.date).toDateString()}</div>
+                    <span className="cate time">{event?.startTime}</span>
+                    <div className="cate price">$ {event?.price}</div>
+                  </div>
+              </Link>
+            </div>
+          )
+        })}
+      </div>
     </div>
-    <div className="container">
-      {/* <h2>Hi from Event Browser</h2> */}
-      {sortedArray.map((event) => {
-        return (
-          <div className="card" key={event?.id} >
-            <Link to={`/event/${event.id}`} style={{ textDecoration: 'none' }}>
-                <div className="card-header" >
-                    <img src={`${event?.imgUrl}`} />
-                </div>
-                <div className="card-body">
-                  <span className="cate tag">{event?.Category?.type}</span>
-                  <h3>{event?.title}</h3>
-                  {/* <div>Id: {event?.id}</div> */}
-                  <div className="cate date">{new Date(event?.date).toDateString()}</div>
-                  <span className="cate time">{event?.startTime}</span>
-                  <div className="cate price">$ {event?.price}</div>
-                </div>
-            </Link>
-          </div>
-        )
-      })}
-    </div>
-    </>
   )
 }
 

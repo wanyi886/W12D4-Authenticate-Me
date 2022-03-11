@@ -3,15 +3,14 @@
   box-sizing: border-box
 }
 
-body {
+.homepage-body {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0;
-  /* background-color: #f7f8fc; */
   font-family: "Roboto", sans-serif;
   color: #10182f;
-  /* border: 2px red solid; */
+  border: 2px red solid;
 
 }
 
@@ -81,5 +80,5 @@ a:visited {
 }
 
 h3 {
-  color:#39364f
+  color: rgb(70, 69, 69)
 }
