@@ -29,14 +29,14 @@ const MyTickets = () => {
     content = (
       <>
       <h1>My Tickets</h1>
-        <div>
+        <div className="no-tickets">
           You have no tickets now.
         </div>
       </>
     )
   } else {
     content = (
-      <>
+      <div className="pagebody">
         <h1>My Tickets</h1>
           {tickets.map((ticket) => {
             return (
@@ -50,7 +50,7 @@ const MyTickets = () => {
               </div>
             )
           })}
-      </>
+      </div>
     )
 
   }

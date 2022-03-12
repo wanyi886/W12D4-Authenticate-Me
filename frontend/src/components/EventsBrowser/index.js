@@ -47,7 +47,7 @@ const EventsBrowser = () => {
                       <img src={`${event?.imgUrl}`} />
                   </div>
                   <div className="card-body">
-                    <span className="cate tag">{event?.Category?.type}</span>
+                    {/* <span className="cate tag">{event?.Category?.type}</span> */}
                     <div>Category{event.categoryId}</div>
                     <h3>{event?.title}</h3>
                     {/* <div>Id: {event?.id}</div> */}
