@@ -79,6 +79,12 @@ a:visited {
   text-transform: uppercase;
 }
 
+.cate {
+  margin-bottom: 10px;
+}
+
 h3 {
-  color: rgb(70, 69, 69)
+  color: rgb(70, 69, 69);
+  margin-bottom: 10px;
+  font-size: 22px;
 }

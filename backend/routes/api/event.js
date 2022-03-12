@@ -64,22 +64,33 @@ router.get('/:id/detail', asyncHandler(async (req, res) => {
 }));
 
 // update one event
-router.put('/:id', validateCreatingEvent, asyncHandler(async(req, res) => {
-  const id = req.params.id;
-  const event = await Event.findOne(
-    {
-      where: { id },
-      include: { model: Category }
-    }
-  );
+// router.put('/:id', validateCreatingEvent, asyncHandler(async(req, res) => {
+//   const id = req.params.id;
+//   const event = await Event.findOne(
+//     {
+//       where: { id },
+//       include: { model: Category }
+//     }
+//   );
 
-  // const { ...updatedEvent } = req.body
+//   // const { ...updatedEvent } = req.body
 
-  // await event.update(updatedEvent);
-  await event.update(req.body);
+//   // await event.update(updatedEvent);
+//   await event.update(req.body);
 
-  return res.json(event);
-}))
+//   return res.json(event);
+// }))
+
+router.put(
+  '/:id',
+  validateCreatingEvent,
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const event = await Event.findByPk(id);
+    await event.update(req.body);
+    res.redirect(303, `/api/event/${id}/detail`);
+  })
+);
 
 router.delete('/:id', asyncHandler(async function (req, res) {
   const id = req.params.id;
