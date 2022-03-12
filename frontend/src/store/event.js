@@ -65,7 +65,6 @@ export const editEvent = (data) => async dispatch => {
 
   if (response.ok) {
     const event = await response.json();
-    console.log("event in thunk", event)
     dispatch(addOneEvent(event));
     return event;
   }
@@ -106,7 +105,6 @@ const eventReducer = (state = initialState, action) => {
       // const eventList = newState.list.map(event => newState[event.id]);
       // eventList.push(action.event);
       // newState.list = eventList
-      console.log("newState in ADD_ONE", newState);
       return newState;
     case DELETE:
       const events = {...state};

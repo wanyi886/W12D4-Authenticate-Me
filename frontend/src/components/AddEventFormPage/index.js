@@ -84,7 +84,6 @@ const AddEventFormPage = () => {
 
     if (createdEvent) {
       dispatch(getOneEvent(createdEvent.id))
-      console.log("new event id", createdEvent.id)
       history.push(`/event/${createdEvent.id}/detail`)
     }
   }

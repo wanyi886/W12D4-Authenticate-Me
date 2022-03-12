@@ -45,7 +45,6 @@ router.get('/', asyncHandler(async(req, res) => {
   const events = await Event.findAll({
     include: { model: Category }
   });
-  console.log(events)
   return res.json(events);
 }))
 

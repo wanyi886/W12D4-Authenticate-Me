@@ -88,8 +88,6 @@ const EditEventFormPage = ({event, hideForm}) => {
       zipCode
     }
 
-    console.log(categoryId)
-
     let updatedEvent = await dispatch(editEvent(payload));
 
     if (updatedEvent) {

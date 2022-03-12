@@ -20,8 +20,6 @@ const EventsBrowser = () => {
   }
 
   const sortedArray = sortList(eventArray);
-  console.log("eventArray", eventArray);
-  console.log("sortedArray", sortList(eventArray))
 
   useEffect(() => {
     dispatch(getEventCategories())
