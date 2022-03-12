@@ -24,9 +24,8 @@ const EventsBrowser = () => {
   useEffect(() => {
     dispatch(getEventCategories())
     dispatch(getAllEvents());
+
   }, [dispatch]);
-
-
 
   if(!eventArray) return null;
 
@@ -45,7 +44,7 @@ const EventsBrowser = () => {
                       <img src={`${event?.imgUrl}`} />
                   </div>
                   <div className="card-body">
-                    {/* <span className="cate tag">{event?.Category?.type}</span> */}
+                    <span className="cate tag">{event?.Category?.type}</span>
                     {/* <div className="cate category">Category{event.categoryId}</div> */}
                     <h3>{event?.title}</h3>
                     {/* <div>Id: {event?.id}</div> */}
