@@ -1,10 +1,11 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
 import { deleteEvent, getAllEvents, getOneEvent } from "../../store/event";
 import { postTicket } from "../../store/ticket";
 import './EventDetail.css'
 import EditEventFormPage from "../EditEventFormPage";
+import EventsBrowser from "../EventsBrowser";
 
 const EventDetail = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,19 @@ const EventDetail = () => {
       userId: sessionUser.id
     }
     dispatch(postTicket(payload));
-    history.push(`/tickets/users/${sessionUser.id}`)
+
+
+    history.push(`/tickets/users/${sessionUser.id}`);
+    window.location.reload(false);
+
+  }
+  // const location = useLocation();
+
+  const handleHomeClick = () => {
+    history.push("/");
+
+    // Not working:
+    // return <EventsBrowser key={location.key} />
   }
 
   let content;
@@ -92,7 +105,8 @@ const EventDetail = () => {
               {event && ownEvent ? <button className='btn edit' type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button className='btn register' type="button" onClick={handleRegisterClick}>Register</button>}
               {event && ownEvent ? <button className='btn delete' type="button" onClick={handleDeleteClick}>Delete</button> : null}
           </div>
-              <button onClick={() => history.push("/")}>Home</button>
+              {/* <button onClick={() => history.push("/")}>Home</button> */}
+              <button onClick={handleHomeClick}>Home</button>
           </div>
       </div>
       )
