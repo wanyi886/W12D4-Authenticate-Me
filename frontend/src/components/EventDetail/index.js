@@ -91,7 +91,8 @@ const EventDetail = () => {
             <div>
               {event && ownEvent ? <button className='btn edit' type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button className='btn register' type="button" onClick={handleRegisterClick}>Register</button>}
               {event && ownEvent ? <button className='btn delete' type="button" onClick={handleDeleteClick}>Delete</button> : null}
-            </div>
+          </div>
+          <button onClick={() => history.push("/")}>Button</button>
           </div>
       </div>
       )

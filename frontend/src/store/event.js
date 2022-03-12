@@ -65,6 +65,7 @@ export const editEvent = (data) => async dispatch => {
 
   if (response.ok) {
     const event = await response.json();
+    console.log("event in thunk", event)
     dispatch(addOneEvent(event));
     return event;
   }
