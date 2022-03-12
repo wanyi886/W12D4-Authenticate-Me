@@ -12,11 +12,11 @@
   flex-direction: column;
   width: 1020px;
   justify-content: center;
-  /* border: blue 1px solid; */
+  border: blue 1px solid;
 }
 
 .ticket-body {
-  /* border: orange 1px solid; */
+  border: orange 1px solid;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -28,7 +28,7 @@
 }
 
 .container {
-  /* border: green 1px solid; */
+  border: green 1px solid;
   height: 150px;
 }
 
