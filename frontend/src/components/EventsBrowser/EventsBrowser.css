@@ -4,13 +4,13 @@
 }
 
 .splash-img-container {
-  height: 500px;
+  height: 550px;
   position: relative;
 }
 
 .splash-img-container img {
   width: 100%;
-  height: 500px;
+  height: 550px;
   object-fit: cover;
 }
 
