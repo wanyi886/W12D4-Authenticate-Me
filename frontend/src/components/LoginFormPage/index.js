@@ -60,7 +60,7 @@ function LoginFormPage() {
             </label>
           </div>
 
-          <div className='form-control'>
+          <div className='form-input'>
               <input
                 type="password"
                 value={password}
