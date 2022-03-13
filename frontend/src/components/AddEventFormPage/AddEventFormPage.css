@@ -3,11 +3,42 @@
   padding-bottom: 5px;
 }
 
-.form-input {
+.img-container2 {
+  width: 50vw;
+}
+.img-container2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.form-input2 input{
   width: 400px;
-  padding-bottom: 3px;
+  height: 30px;
+  padding: 5px;
+  color:rgb(65, 65, 65);
+}
+
+.form-label .form-select select {
+  width: 400px;
 }
 
 textarea {
   width: 400px;
+  height: 40px;
+  padding: 5px;
+  color:rgb(65, 65, 65);
+  font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+}
+
+.btn.submit {
+  margin-top: 35px;
+  width: 390px;
+  height: 45px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  border: #e09900 solid 2px;
+  color: #e09900;
+  font-weight: bold;
 }

@@ -12,22 +12,22 @@
   flex-direction: column;
   width: 1020px;
   justify-content: center;
-  border: blue 1px solid;
+  /* border: blue 1px solid; */
 }
 
 .ticket-body {
-  border: orange 1px solid;
+  /* border: orange 1px solid; */
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   height: 150px;
   margin: 10px;
   background-color: #fff;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .container {
-  border: green 1px solid;
+  /* border: green 1px solid; */
   height: 150px;
 }
 
@@ -57,6 +57,11 @@
 
 .btn.container {
   width: 150px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: red 1px solid;
 }
 
 .title {
@@ -81,6 +86,8 @@ h1 {
 
 .cancel-regi {
   cursor: pointer;
+  height: 50px;
+  /* border-radius: 20px; */
   background-color: #ffae00;
   color: white;
   border: none;

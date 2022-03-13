@@ -1,9 +1,34 @@
+.outter-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-container {
+  width: 50%;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  /* border: red 1px solid; */
+}
+
+.img-container {
+  width: 50vw;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
 h1 {
   font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
   font-weight: 800;
   font-size: 52px;
   letter-spacing: 1px;
-  color:rgb(65, 65, 65)
+  color:rgb(65, 65, 65);
 }
 
 form {
@@ -12,8 +37,37 @@ form {
   color: rgb(97, 97, 97)
 }
 
-.form-container {
-  display: flex;
-  flex-direction: column;
-  align-self: stretch;
+.form-input input{
+  width: 400px;
+  height: 45px;
+  padding: 10px;
+  font-size: 20px;
+  color:rgb(65, 65, 65);
+
+}
+
+.btn-login {
+  border: #e09900 solid 2px;
+  color: #e09900;
+  font-weight: bold;
+  margin-top: 40px;
+  background-color: white;
+  width: 400px;
+  height: 45px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn-demo {
+  border:rgb(97, 97, 97) 2px solid;
+  color:rgb(97, 97, 97);
+  font-weight: bold;
+  margin-top: 15px;
+  background-color: white;
+  width: 400px;
+  height: 45px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 18px;
 }

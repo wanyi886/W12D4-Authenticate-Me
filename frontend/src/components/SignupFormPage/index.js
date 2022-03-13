@@ -1,6 +1,6 @@
 // frontend/src/components/SignupFormPage/index.js
 import './SignupForm.css';
-
+import drinking from '../../images/drinking.jpg'
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -31,66 +31,82 @@ function SignupFormPage() {
   };
 
   return (
-    <div className='form-container'>
-      <h1>Create an Account</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-        <div>
-          <label>
-            Email
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </label>
-        </div>
+    <div className='outter-container'>
+      <div className='form-container'>
+        <h1>Create an Account</h1>
+        <form onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+          <div>
+            <label>
+              Email
+            </label>
+          </div>
 
-        <div>
-          <label>
-            Username
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </label>
-        </div>
+          <div className='form-input'>
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                />
+          </div>
 
-        <div>
-          <label>
-            Password
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </label>
-        </div>
+          <div>
+            <label>
+              Username
+            </label>
+          </div>
 
-        <div>
-          <label>
-            Confirm Password
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-          </label>
-        </div>
-        <div>
-          <button type="submit">Sign Up</button>
-        </div>
-        <div>
-          <a href="/login">Already have an account?</a>
-        </div>
-      </form>
+          <div className='form-input'>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+          </div>
+
+          <div>
+            <label>
+              Password
+            </label>
+          </div>
+          <div className='form-input'>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+          </div>
+
+          <div>
+            <label>
+              Confirm Password
+            </label>
+          </div>
+          <div className='form-input'>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+          </div>
+          <div>
+            <button className="btn-login" type="submit">Sign Up</button>
+          </div>
+          <div className='login-container'>
+            <a  className="atag" href="/login">Already have an account?</a>
+          </div>
+        </form>
+      </div>
+      <div className='img-container'>
+        <img src={drinking} />
+      </div>
+
     </div>
   );
 }

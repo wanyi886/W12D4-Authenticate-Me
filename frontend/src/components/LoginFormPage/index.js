@@ -1,4 +1,5 @@
 import './LoginForm.css';
+import coffeImg from '../../images/coffee.jpg'
 
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
@@ -32,47 +33,56 @@ function LoginFormPage() {
   }
 
   return (
-    <div className='form-container'>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-        <div>
-          <label>
-            Username or Email
-            <input
-              type="text"
-              value={credential}
-              onChange={(e) => setCredential(e.target.value)}
-              required
-            />
-          </label>
-        </div>
+    <div className='outter-container'>
+      <div className='form-container'>
+        <h1>Log In</h1>
+        <form onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+          <div className='form-label'>
+            <label>
+              Username or Email
+            </label>
+          </div>
+          <div className='form-input'>
+              <input
+                type="text"
+                value={credential}
+                onChange={(e) => setCredential(e.target.value)}
+                required
+              />
+          </div>
+
+          <div className='form-label'>
+            <label>
+              Password
+            </label>
+          </div>
+
+          <div className='form-input'>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+          </div>
+
+          <div>
+            <button className="btn-login" type="submit">Log In</button>
+          </div>
+        </form>
 
         <div>
-          <label>
-            Password
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </label>
+          <button className="btn-demo" type="submit" onClick={handleClick}>Demo User Log In</button>
         </div>
-
-        <div>
-          <button type="submit">Log In</button>
-        </div>
-      </form>
-
-      <div>
-        <button type="submit" onClick={handleClick}>Demo User Log In</button>
       </div>
 
+      <div className='img-container'>
+        <img src={coffeImg} />
+      </div>
     </div>
-
   );
 }
 
