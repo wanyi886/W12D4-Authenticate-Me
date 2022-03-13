@@ -59,7 +59,19 @@
 .price {
   font-size: 20px;
 }
+
+.btn {
+  width: 80px;
+}
+.homeB {
+  width: 160px;
+}
+
+.register {
+  width: 160px;
+}
+
 .login-reminder {
-  color: rgba(255, 166, 0, 0.808);
-  font-weight: 900;
+  color: rgba(240, 149, 3, 0.808);
+  font-weight: 600;
 }

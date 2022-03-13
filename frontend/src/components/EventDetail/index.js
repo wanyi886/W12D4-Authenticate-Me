@@ -57,28 +57,35 @@ const EventDetail = () => {
   if (!sessionUser) {
     content = content = (
       <div className="detail-page-body">
-        <h1>{event?.title}</h1>
-        <div className="detail-container">
+          <h1>{event?.title}</h1>
+          <div className="detail-container">
+              <div  className="ima-container">
+                <img src={event?.imgUrl} />
+              </div>
 
-            <div  className="detail-header">
-              <img src={event?.imgUrl} />
-            </div>
+              <div className="info-container">
+                <div className="content subtitle">About</div>
+                <div className="content des">{event && event.description}</div>
+                <div className="content subtitle">Date and Time</div>
+                <div className="content dates">{new Date(event?.date).toDateString()}</div>
+                <div className="content time">{`${event?.startTime} - ${event?.endTime}`}</div>
+                <div className="content price">$ {event?.price} </div>
+                <div className="content subtitle">Location</div>
+                <div className="content address">{event?.address}</div>
+                <div className="content city-state-zip">{event?.city}, {event?.state} {event?.zipCode}</div>
+                <div>
+                  <div className="content subtitle login-reminder">
+                    Please log in to register this event.
+                  </div>
+                </div>
+                <div>
+                    {/* <button onClick={() => history.push("/")}>Home</button> */}
+                    <button className="btn homeB"onClick={handleHomeClick}>Home</button>
+                </div>
+              </div>
+          </div>
+      </div>
 
-            <div className="content subtitle">About this event</div>
-            <div className="content des">{event && event.description}</div>
-            <div className="content subtitle">Date and Time</div>
-            <div className="content date">{new Date(event?.date).toDateString()}</div>
-            <div className="content time">{`${event?.startTime} - ${event?.endTime}`}</div>
-            <div className="content price">$ {event?.price} </div>
-            <div className="content subtitle">Location</div>
-            <div className="content address">{event?.address}</div>
-            <div className="content city-state-zip">{event?.city}, {event?.state} {event?.zipCode}</div>
-            <div className="content subtitle login-reminder">
-              Please log in to register this event.
-            </div>
-
-        </div>
-    </div>
     )
   } else {
 
@@ -110,7 +117,7 @@ const EventDetail = () => {
                   {event && ownEvent ? <button className='btn delete' type="button" onClick={handleDeleteClick}>Delete</button> : null}
                 </div>
                     {/* <button onClick={() => history.push("/")}>Home</button> */}
-                    <button onClick={handleHomeClick}>Home</button>
+                    <button className="btn homeB"onClick={handleHomeClick}>Home</button>
                 </div>
 
           </div>
