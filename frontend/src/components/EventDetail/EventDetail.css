@@ -60,15 +60,56 @@
   font-size: 20px;
 }
 
-.btn {
-  width: 80px;
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
 }
+
+.btn {
+  width: 100px;
+  height: 30px;
+  background-color: white;
+  margin: 2px;
+}
+
+.edit {
+  border: rgb(0, 94, 202) 1px solid;
+  font-size: 15px;
+  color:rgb(0, 94, 202);
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+}
+
+.delete {
+  border: rgb(172, 0, 0) 1px solid;
+  font-size: 15px;
+  color:rgb(172, 0, 0);
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+}
+
 .homeB {
-  width: 160px;
+  border: rgb(100, 100, 100) 1px solid;
+  font-size: 15px;
+  color:rgb(100, 100, 100);
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
 }
 
 .register {
-  width: 160px;
+  border: rgb(0, 151, 151) 1px solid;
+  font-size: 15px;
+  color:rgb(0, 151, 151);
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
 }
 
 .login-reminder {

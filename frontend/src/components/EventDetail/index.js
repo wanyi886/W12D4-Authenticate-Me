@@ -64,6 +64,9 @@ const EventDetail = () => {
               </div>
 
               <div className="info-container">
+                <div className="btn-container">
+                    <button className="btn homeB"onClick={handleHomeClick}>Home</button>
+                </div>
                 <div className="content subtitle">About</div>
                 <div className="content des">{event && event.description}</div>
                 <div className="content subtitle">Date and Time</div>
@@ -78,10 +81,7 @@ const EventDetail = () => {
                     Please log in to register this event.
                   </div>
                 </div>
-                <div>
-                    {/* <button onClick={() => history.push("/")}>Home</button> */}
-                    <button className="btn homeB"onClick={handleHomeClick}>Home</button>
-                </div>
+
               </div>
           </div>
       </div>
@@ -99,10 +99,17 @@ const EventDetail = () => {
         <div className="detail-page-body">
           <h1>{event?.title}</h1>
           <div className="detail-container">
+
               <div  className="ima-container">
                 <img src={event?.imgUrl} />
               </div>
               <div className="info-container">
+                <div className="btn-container">
+                    {event && ownEvent ? <button className='btn edit' type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button className='btn register' type="button" onClick={handleRegisterClick}>Register</button>}
+                    {event && ownEvent ? <button className='btn delete' type="button" onClick={handleDeleteClick}>Delete</button> : null}
+                      {/* <button onClick={() => history.push("/")}>Home</button> */}
+                    <button className="btn homeB"onClick={handleHomeClick}>Home</button>
+                </div>
                 <div className="content subtitle">About</div>
                 <div className="content des">{event && event.description}</div>
                 <div className="content subtitle">Date and Time</div>
@@ -112,14 +119,8 @@ const EventDetail = () => {
                 <div className="content subtitle">Location</div>
                 <div className="content address">{event?.address}</div>
                 <div className="content city-state-zip">{event?.city}, {event?.state} {event?.zipCode}</div>
-                <div>
-                  {event && ownEvent ? <button className='btn edit' type="button" onClick={() => setShowEditForm(true)}>Edit</button> : <button className='btn register' type="button" onClick={handleRegisterClick}>Register</button>}
-                  {event && ownEvent ? <button className='btn delete' type="button" onClick={handleDeleteClick}>Delete</button> : null}
-                </div>
-                    {/* <button onClick={() => history.push("/")}>Home</button> */}
-                    <button className="btn homeB"onClick={handleHomeClick}>Home</button>
-                </div>
 
+              </div>
           </div>
       </div>
       )
