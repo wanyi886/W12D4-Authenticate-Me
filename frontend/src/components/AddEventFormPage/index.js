@@ -98,9 +98,8 @@ const AddEventFormPage = () => {
         <div className='form-label'>
           <label htmlFor='title'>Title</label>
         </div>
-        <div className='form-input'>
+        <div className='form-input2'>
           <input
-            className='form-input'
             type="text"
             name="title"
             placeholder="Give a name for the event"
@@ -112,7 +111,7 @@ const AddEventFormPage = () => {
         <div className='form-label'>
           <label htmlFor='description'>Description</label>
         </div>
-        <div className='form-input'>
+        <div className='form-input2'>
           <textarea
             name="description"
             placeholder='Tell us More about this event...'
@@ -140,14 +139,13 @@ const AddEventFormPage = () => {
         <div className='form-label'>
           <label htmlFor='imgUrl'>The image URL of the event</label>
         </div>
-        <div>
+        <div className='form-input2'>
           <input
             type="text"
             name="imgUrl"
             placeholder='Ex: http://123456'
             value={imgUrl}
             onChange={e => setImgUrl(e.target.value)}
-            className='form-input'
             >
           </input>
         </div>
@@ -155,9 +153,8 @@ const AddEventFormPage = () => {
         <div className='form-label'>
           <label htmlFor='price'>Set the Price of Your Event</label>
         </div>
-        <div>
+        <div className='form-input2'>
           <input
-            className='form-input'
             type="number"
             name="price"
             value={price}
@@ -170,9 +167,8 @@ const AddEventFormPage = () => {
         <div className='form-label'>
           <label htmlFor="date">Event Date</label>
         </div>
-        <div>
+        <div className='form-input2'>
           <input
-            className='form-input'
             type="date"
             name="date"
             value={date}
@@ -184,9 +180,8 @@ const AddEventFormPage = () => {
         <div className='form-label'>
           <label htmlFor='startTime'>Event Start Time</label>
         </div>
-        <div>
+        <div className='form-input2'>
           <input
-            className='form-input'
             type="time"
             name="startTime"
             value={startTime}
@@ -198,9 +193,8 @@ const AddEventFormPage = () => {
         <div className='form-label'>
           <label htmlFor='endTime'>Event End Time</label>
         </div>
-        <div>
+        <div className='form-input2'>
           <input
-            className='form-input'
             type="time"
             name="endTime"
             value={endTime}
@@ -212,9 +206,8 @@ const AddEventFormPage = () => {
         <div className='form-label'>
           <label htmlFor='address'>Address</label>
         </div>
-        <div>
+        <div className='form-input2'>
           <input
-            className='form-input'
             type="text"
             name="address"
             value={address}
@@ -226,9 +219,8 @@ const AddEventFormPage = () => {
         <div className='form-label'>
           <label htmlFor='city'>City</label>
         </div>
-        <div>
+        <div className='form-input2'>
           <input
-            className='form-input'
             type="text"
             name="city"
             placeholder='Ex. San Francisco'
@@ -241,9 +233,8 @@ const AddEventFormPage = () => {
         <div className='form-label'>
           <label htmlFor='state'>State</label>
         </div>
-        <div>
+        <div className='form-input2'>
           <input
-            className='form-input'
             type="text"
             name="city"
             placeholder='Ex: CA'
@@ -256,9 +247,8 @@ const AddEventFormPage = () => {
         <div className='form-label'>
           <label htmlFor='zipCode'>Zipcode</label>
         </div>
-        <div>
+        <div className='form-input2'>
           <input
-            className='form-input'
             type="text"
             name="zipCode"
             placeholder='Ex: 91230'
