@@ -1,5 +1,5 @@
 import './AddEventFormPage.css';
-import create from '../../images/hiking.jpg'
+import create from '../../images/hangout.jpg'
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
