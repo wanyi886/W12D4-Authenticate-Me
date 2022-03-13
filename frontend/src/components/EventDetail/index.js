@@ -96,10 +96,10 @@ const EventDetail = () => {
                 <img src={event?.imgUrl} />
               </div>
               <div className="info-container">
-                <div className="content subtitle">About this event</div>
+                <div className="content subtitle">About</div>
                 <div className="content des">{event && event.description}</div>
                 <div className="content subtitle">Date and Time</div>
-                <div className="content date">{new Date(event?.date).toDateString()}</div>
+                <div className="content dates">{new Date(event?.date).toDateString()}</div>
                 <div className="content time">{`${event?.startTime} - ${event?.endTime}`}</div>
                 <div className="content price">$ {event?.price} </div>
                 <div className="content subtitle">Location</div>
