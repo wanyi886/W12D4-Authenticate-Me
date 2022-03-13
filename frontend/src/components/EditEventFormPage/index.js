@@ -1,4 +1,5 @@
 import './EditEventFormPage.css';
+import hangout from '../../images/hangout.jpg'
 
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -102,191 +103,187 @@ const EditEventFormPage = ({event, hideForm}) => {
   }
 
   return (
-    <div className='form-container'>
-      <h1>Edit this Event</h1>
-      <form onSubmit={handleSubmit}>
-      <ul>
-          {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-        <div className='form-label'>
-          <label htmlFor='title'>Title</label>
-        </div>
-        <div>
-          <input
-            className='form-input'
-            type="text"
-            name="title"
-            placeholder="Give a name for the event"
-            value={title}
-            onChange={e => setTitle(e.target.value)}>
-          </input>
-        </div>
+    <div className='outter-container'>
+      <div className='img-container2'>
+        <img src={hangout}/>
+      </div>
+      <div className='form-container'>
+        <h1>Edit this Event</h1>
+        <form onSubmit={handleSubmit}>
+        <ul>
+            {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+          <div className='form-label'>
+            <label htmlFor='title'>Title</label>
+          </div>
+          <div className='form-input2'>
+            <input
+              type="text"
+              name="title"
+              placeholder="Give a name for the event"
+              value={title}
+              onChange={e => setTitle(e.target.value)}>
+            </input>
+          </div>
 
-        <div className='form-label'>
-          <label htmlFor='description'>Description</label>
-        </div>
-        <div>
-          <textarea
-            name="description"
-            placeholder='Tell us More about this event...'
-            value={description}
-            onChange={e => setDescription(e.target.value)}
+          <div className='form-label'>
+            <label htmlFor='description'>Description</label>
+          </div>
+          <div>
+            <textarea
+              name="description"
+              placeholder='Tell us More about this event...'
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+              >
+            </textarea>
+          </div>
+
+          <div className='form-label'>
+            <label htmlFor='category'>Select a Category</label>
+          </div>
+            <select
+              name="category"
+              onChange={e => setCategory(e.target.value)}
+              value={category}
             >
-          </textarea>
-        </div>
-
-        <div className='form-label'>
-          <label htmlFor='category'>Select a Category</label>
-        </div>
-          <select
-            name="category"
-            onChange={e => setCategory(e.target.value)}
-            value={category}
-          >
-            {eventCategories.map(category =>
-              <option key={category.id}>{category.type}</option>
-              )}
-          </select>
+              {eventCategories.map(category =>
+                <option key={category.id}>{category.type}</option>
+                )}
+            </select>
 
 
-        <div className='form-label'>
-          <label htmlFor='imgUrl'>The image URL of the event</label>
-        </div>
-        <div>
-          <input
-            className='form-input'
-            type="text"
-            name="imgUrl"
-            placeholder='Ex: http://123456'
-            value={imgUrl}
-            onChange={e => setImgUrl(e.target.value)}
-            >
-          </input>
-        </div>
+          <div className='form-label'>
+            <label htmlFor='imgUrl'>The image URL of the event</label>
+          </div>
+          <div className='form-input2'>
+            <input
+              type="text"
+              name="imgUrl"
+              placeholder='Ex: http://123456'
+              value={imgUrl}
+              onChange={e => setImgUrl(e.target.value)}
+              >
+            </input>
+          </div>
 
-        <div className='form-label'>
-          <label htmlFor='price'>Set the Price of Your Event</label>
-        </div>
-        <div>
-          <input
-            className='form-input'
-            type="number"
-            name="price"
-            value={price}
-            min={0}
-            onChange={e => setPrice(e.target.value)}>
-          </input>
-        </div>
+          <div className='form-label'>
+            <label htmlFor='price'>Set the Price of Your Event</label>
+          </div>
+          <div className='form-input2'>
+            <input
+              type="number"
+              name="price"
+              value={price}
+              min={0}
+              onChange={e => setPrice(e.target.value)}>
+            </input>
+          </div>
 
-        <div className='form-label'>
-          <label htmlFor="date">Event Date</label>
-        </div>
-        <div>
-          <input
-            className='form-input'
-            type="date"
-            name="date"
-            value={date}
-            onChange={e => setDate(e.target.value)}
-            >
-          </input>
-        </div>
+          <div className='form-label'>
+            <label htmlFor="date">Event Date</label>
+          </div>
+          <div className='form-input2'>
+            <input
+              type="date"
+              name="date"
+              value={date}
+              onChange={e => setDate(e.target.value)}
+              >
+            </input>
+          </div>
 
-        <div className='form-label'>
-          <label htmlFor='startTime'>Event Start Time</label>
-        </div>
-        <div>
-          <input
-            className='form-input'
-            type="time"
-            name="startTime"
-            value={startTime}
-            onChange={e => setStartTime(e.target.value)}
-            >
-          </input>
-        </div>
+          <div className='form-label'>
+            <label htmlFor='startTime'>Event Start Time</label>
+          </div>
+          <div className='form-input2'>
+            <input
+              type="time"
+              name="startTime"
+              value={startTime}
+              onChange={e => setStartTime(e.target.value)}
+              >
+            </input>
+          </div>
 
-        <div className='form-label'>
-          <label htmlFor='endTime'>Event End Time</label>
-        </div>
-        <div>
-          <input
-            className='form-input'
-            type="time"
-            name="endTime"
-            value={endTime}
-            onChange={e => setEndTime(e.target.value)}
-            >
-          </input>
-        </div>
+          <div className='form-label'>
+            <label htmlFor='endTime'>Event End Time</label>
+          </div>
+          <div className='form-input2'>
+            <input
+              type="time"
+              name="endTime"
+              value={endTime}
+              onChange={e => setEndTime(e.target.value)}
+              >
+            </input>
+          </div>
 
-        <div className='form-label'>
-          <label htmlFor='address'>Address</label>
-        </div>
-        <div>
-          <input
-            className='form-input'
-            type="text"
-            name="address"
-            value={address}
-            onChange={e => setAddress(e.target.value)}
-            >
-          </input>
-        </div>
+          <div className='form-label'>
+            <label htmlFor='address'>Address</label>
+          </div>
+          <div className='form-input2'>
+            <input
+              type="text"
+              name="address"
+              value={address}
+              onChange={e => setAddress(e.target.value)}
+              >
+            </input>
+          </div>
 
-        <div className='form-label'>
-          <label htmlFor='city'>City</label>
-        </div>
-        <div>
-          <input
-            className='form-input'
-            type="text"
-            name="city"
-            placeholder='Ex. San Francisco'
-            value={city}
-            onChange={e => setCity(e.target.value)}
-            >
-          </input>
-        </div>
+          <div className='form-label'>
+            <label htmlFor='city'>City</label>
+          </div>
+          <div className='form-input2'>
+            <input
+              type="text"
+              name="city"
+              placeholder='Ex. San Francisco'
+              value={city}
+              onChange={e => setCity(e.target.value)}
+              >
+            </input>
+          </div>
 
-        <div className='form-label'>
-          <label htmlFor='state'>State</label>
-        </div>
-        <div>
-          <input
-            className='form-input'
-            type="text"
-            name="city"
-            placeholder='Ex: CA'
-            value={state}
-            onChange={e => setState(e.target.value)}
-            >
-          </input>
-        </div>
+          <div className='form-label'>
+            <label htmlFor='state'>State</label>
+          </div>
+          <div className='form-input2'>
+            <input
+              type="text"
+              name="city"
+              placeholder='Ex: CA'
+              value={state}
+              onChange={e => setState(e.target.value)}
+              >
+            </input>
+          </div>
 
-        <div className='form-label'>
-          <label htmlFor='zipCode'>Zipcode</label>
-        </div>
-        <div>
-          <input
-            className='form-input'
-            type="text"
-            name="zipCode"
-            placeholder='Ex: 91230'
-            value={zipCode}
-            onChange={e => setZipCode(e.target.value)}
-            >
-          </input>
-        </div>
+          <div className='form-label'>
+            <label htmlFor='zipCode'>Zipcode</label>
+          </div>
+          <div className='form-input2'>
+            <input
+              type="text"
+              name="zipCode"
+              placeholder='Ex: 91230'
+              value={zipCode}
+              onChange={e => setZipCode(e.target.value)}
+              >
+            </input>
+          </div>
 
-          <button
-            className='btn submit'
-            type="submit"
-            // disabled={errors? true : false}
-            >Submit</button>
-
-        <button className='btn submit' type="button" onClick={handleCancelClick}>Cancel</button>
-      </form>
+            <button
+              className='btn submit'
+              type="submit"
+              // disabled={errors? true : false}
+              >Submit</button>
+          <div>
+            <button className='btn submit' type="button" onClick={handleCancelClick}>Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
