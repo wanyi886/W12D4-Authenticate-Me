@@ -4,7 +4,7 @@ import { Link, NavLink, Route, useParams } from 'react-router-dom';
 import { getAllEvents } from "../../store/event";
 import { getEventCategories } from "../../store/category";
 import './EventsBrowser.css'
-import splashImg from '../../images/homepage1.jpg'
+import splashImg from '../../images/homepage3.jpg'
 
 const EventsBrowser = () => {
   const dispatch = useDispatch();

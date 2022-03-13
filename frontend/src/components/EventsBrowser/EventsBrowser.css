@@ -3,14 +3,20 @@
   box-sizing: border-box
 }
 
-.spsplash-img-container {
+.splash-img-container {
   height: 500px;
+  position: relative;
 }
 
 .splash-img-container img {
   width: 100%;
   height: 500px;
   object-fit: cover;
+}
+
+.text-block {
+  position: absolute;
+
 }
 
 .homepage-body {
