@@ -3,6 +3,15 @@
   padding-bottom: 5px;
 }
 
+.img-container2 {
+  width: 50vw;
+}
+.img-container2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .form-input2 input{
   width: 400px;
   height: 30px;
@@ -24,7 +33,7 @@ textarea {
 
 .btn.submit {
   margin-top: 35px;
-  width: 395px;
+  width: 390px;
   height: 45px;
   border-radius: 20px;
   cursor: pointer;
