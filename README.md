@@ -5,8 +5,8 @@ This is a clone of [eventbrite](https://www.eventbrite.com/). EventLight is a we
 
 
 ## Table of Contents
-  - [MVP Feature List](#Features)
-  - [Database Schema](#Database-Schema )
+  - [MVP Feature List](https://github.com/wanyi886/W16-solo-project-eventLight/wiki/Features)
+  - [Database Schema](https://github.com/wanyi886/W16-solo-project-eventLight/wiki/Database-Schema )
   - [API Documentation](#API-Documentation)
   - [Frontend Routes](#Frontend-Routes)
 
