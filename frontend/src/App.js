@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
+import states from "../stateList.json";
 import AddEventFormPage from "./components/AddEventFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
@@ -36,13 +37,13 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path="/add-event">
-            <AddEventFormPage />
+            <AddEventFormPage states={states}/>
           </Route>
           <Route exact path="/event/:id/detail">
             <EventDetail />
           </Route>
           <Route path="/event/:id/edit">
-            <EditEventFormPage />
+            <EditEventFormPage states={states}/>
           </Route>
           <Route path="/tickets/users/:id">
             <MyTickets />
